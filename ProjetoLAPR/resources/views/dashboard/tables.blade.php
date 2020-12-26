@@ -1,13 +1,24 @@
 @extends('layouts.app')
 
 @section('title')
-    Dashboard | {{$tableName}}
+    Dashboard | {{ucfirst($tableName)}}
 @endsection
 
 @section('content')
     <div class="container">
         <table>
             @switch($tableName)
+                @case('subscribed Users')
+                @foreach($users as $user)
+                    <tr>
+                        <td>{{$user['name']}}</td>
+                        <td>{{$user['email']}}</td>
+                        <td>{{$user['email_verified_at']}}</td>
+                        <td>{{$user['created_at']}}</td>
+                        <td>{{$user['created_at']}}</td>
+                    </tr>
+                @endforeach
+                @break
                 @case('users')
                 @foreach($users as $user)
                     <tr>

@@ -29,13 +29,15 @@ class HomeController extends Controller
 
 
     public function dashboard()
-    {   $tables=$this->tableNames();
-       return view('dashboard',['tables'=>$tables]);
+    {
+//        $tables = $this->tableNames();
+        return view('dashboard'/*, ['tables' => $tables]*/);
     }
 
-    private function tableNames(){
+    private function tableNames()
+    {
         $tables = \DB::select('SHOW TABLES');
-        $tables = array_map('current',$tables);
+        $tables = array_map('current', $tables);
         return $tables;
     }
 }

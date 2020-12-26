@@ -7,13 +7,15 @@
 @section('content')
     <div class="container">
             <div class="row">
-                @foreach($tables as $table)
-                    @if(strcmp('users',$table)==0 or strcmp('products',$table)==0)
                 <div class="col">
-                    <li><a href="{{url("/dashboard/tables/$table")}}">{{$table}}</a></li>
+                    <li><a href="{{url("/dashboard/tables/users")}}">Users</a></li>
                 </div>
-                @endif
-                @endforeach
+                <div class="col">
+                    <li><a href="{{url("/dashboard/tables/products")}}">Products</a></li>
+                </div>
+                <div class="col">
+                    <li><a href="{{url("/dashboard/tables/subs")}}">Subscribed Users</a></li>
+                </div>
             </div>
     </div>
 @endsection

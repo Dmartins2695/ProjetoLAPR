@@ -12,9 +12,23 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
 
+    public function showUsers(){
+        $tableName = 'users';
+        $users = User::all();
+        foreach ($users as $user) {
+            $roles = $user->rolesNames();
+            foreach ($roles as $role) {
+                if (strcmp('user', $role) == 0) {
+                    $show[] = $user;
+                }
+            }
+        }
+        return view('dashboard.tables', ['users' => $show, 'tableName' => $tableName]);
+    }
+
     public function showSubs()
     {
-        $tableName = 'users';
+        $tableName = 'subscribed Users';
         $users = User::all();
         foreach ($users as $user) {
             $roles = $user->rolesNames();
