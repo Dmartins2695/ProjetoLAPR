@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,8 +27,15 @@ class HomeController extends Controller
         return view('home');
     }
 
+
     public function dashboard()
-    {
-        return view('dashboard');
+    {   $tables=$this->tableNames();
+       return view('dashboard',['tables'=>$tables]);
+    }
+
+    private function tableNames(){
+        $tables = \DB::select('SHOW TABLES');
+        $tables = array_map('current',$tables);
+        return $tables;
     }
 }

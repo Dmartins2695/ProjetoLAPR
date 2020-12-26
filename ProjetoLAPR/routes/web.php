@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify'=>true]);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard')->middleware('verified');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('verified');
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard')->middleware('verified');
+Route::get('/dashboard/tables/users', [DashboardController::class, 'showSubs'])->middleware('verified');
+Route::get('/dashboard/tables/products', [DashboardController::class, 'showProducts'])->middleware('verified');
+
 
 Route::get('/email/verify', function () {
     return view('auth.verify');
