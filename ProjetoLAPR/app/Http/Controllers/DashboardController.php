@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class DashboardController extends Controller
 
     public function showUsers(){
         $tableName = 'users';
-        $users = User::all();
+        $users = User::paginate(2);
         foreach ($users as $user) {
             $roles = $user->rolesNames();
             foreach ($roles as $role) {
@@ -23,7 +24,7 @@ class DashboardController extends Controller
                 }
             }
         }
-        return view('dashboard.tables', ['users' => $show, 'tableName' => $tableName]);
+        return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
     }
 
     public function showSubs()
@@ -38,15 +39,14 @@ class DashboardController extends Controller
                 }
             }
         }
-        return view('dashboard.tables', ['users' => $show, 'tableName' => $tableName]);
+        $users = User::paginate(2);
+        return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
     }
 
     public function showProducts()
     {
         $tableName = 'products';
-        $product['name']='viola';
-        $product['price']=18.83;
-        $products[]=$product;
+        $products=Product::paginate(2);
         return view('dashboard.tables', ['products' => $products, 'tableName' => $tableName]);
     }
 }
