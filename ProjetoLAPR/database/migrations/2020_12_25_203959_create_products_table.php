@@ -18,11 +18,13 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('family')->nullable();
             $table->string('type')->nullable();
+            $table->unsignedBigInteger('stock')->nullable();
             $table->string('brand')->nullable();
             $table->unsignedFloat('price');
             $table->string('description')->nullable();
             $table->string('image')->nullable();
             $table->string('color')->nullable();
+
             $table->timestamps();
         });
     }
@@ -37,3 +39,4 @@ class CreateProductsTable extends Migration
         Schema::dropIfExists('products');
     }
 }
+
