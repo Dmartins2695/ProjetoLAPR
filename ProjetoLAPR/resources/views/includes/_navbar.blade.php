@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('home') }}" style="font-family: 'French Script MT'; font-size: 30px; padding-top: 0; padding-bottom: 0;">Allegro</a>
+        <a class="navbar-brand" href="{{ route('home') }}"
+           style="font-family: 'French Script MT'; font-size: 30px; padding-top: 0; padding-bottom: 0;">Allegro</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -30,10 +31,12 @@
                         </li>
                     @endif
                 @else
-                    <span class="navbar-text" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-haspopup="true" aria-expanded="false"
+                        href="#">
                             {{ ucfirst(Auth::user()->name) }}
-                        </span>
-
+                        </a>
+                    </li>
                     @can('edit_forum')
                         <li class="nav-item">
                             <a class="nav-link {{Request::path() === "dashboard" ? "active":""}}"
