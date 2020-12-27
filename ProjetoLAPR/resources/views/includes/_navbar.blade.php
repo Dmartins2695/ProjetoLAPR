@@ -56,6 +56,10 @@
                         </form>
                     </li>
                 @endguest
+                <li class="nav-item">
+                    <a class="nav-link  {{Request::path() === "cart" ? "active":""}}"
+                       href="{{ url('/home/showCart') }}"><span><img src="{{asset('nav-cart.png')}}" alt="cart">{{ __('Cart') }}</span></a>
+                </li>
             </ul>
         </div>
     </div>

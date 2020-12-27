@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide mx-auto mb-3" style="width: 638px" data-bs-ride="carousel">
         <ol class="carousel-indicators">
             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
@@ -13,13 +13,13 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{asset('/products/carrousel1.jpg')}}" class="d-block w-100" alt="...">
+                <img src="{{asset('/carrousel/carrousel1.jpg')}}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="{{asset('/products/carrousel2.jpg')}}" class="d-block w-100" alt="...">
+                <img src="{{asset('/carrousel/carrousel2.jpg')}}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="{{asset('/products/carrousel3.jpg')}}" class="d-block w-100" alt="...">
+                <img src="{{asset('/carrousel/carrousel3.jpg')}}" class="d-block w-100" alt="...">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -31,4 +31,7 @@
             <span class="visually-hidden">Next</span>
         </a>
     </div>
+
+    @include('includes.showProducts')
+
 @endsection
