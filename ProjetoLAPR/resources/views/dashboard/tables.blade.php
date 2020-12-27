@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    @include('includes._dashboardBar')
     <div class="container">
         <table class="table table-striped table-hover">
             @switch($tableName)
