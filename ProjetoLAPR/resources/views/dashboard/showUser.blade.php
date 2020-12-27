@@ -1,12 +1,17 @@
 @extends('layouts.dashLayout')
 
 @section('title')
-    Allegro | Dashboard
+    Allegro | Show User
 @endsection
 
 @section('content')
 
     @include('includes.dashboard._dashboardBar')
+    <div class="row align-items-center justify-content-center" style="margin-top:45px">
+        <div class="col-sm-2 text-start border-bottom">
+            <h2 class="mx-auto">Details from {{ucfirst($user->name)}}</h2>
+        </div>
+    </div>
     <div class="container " style="margin-top: 5rem;">
         <div class="container mb-2">
             <div class="row align-items-center justify-content-center">

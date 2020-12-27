@@ -18,6 +18,7 @@
                 <th>|</th>
                 <th></th>
                 <th></th>
+                <th></th>
                 <caption>List of Subscribed Users</caption>
                 @foreach($pUsers as $pUser)
                     @foreach($users as $user)
@@ -42,6 +43,7 @@
                 <th>Created</th>
                 <th>Updated</th>
                 <th>|</th>
+                <th></th>
                 <th></th>
                 <th></th>
                 <caption>List of Users</caption>

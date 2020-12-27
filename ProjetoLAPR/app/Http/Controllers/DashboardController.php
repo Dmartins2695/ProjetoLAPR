@@ -14,8 +14,9 @@ class DashboardController extends Controller
 {
 
     public function showUsers(){
-        $tableName = 'users';
-        $users = User::paginate(15);
+        $show=null;
+        $tableName = 'subscribed Users';
+        $users = User::all();
         foreach ($users as $user) {
             $roles = $user->rolesNames();
             foreach ($roles as $role) {
@@ -24,11 +25,20 @@ class DashboardController extends Controller
                 }
             }
         }
-        return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
+        if($show!=null){
+            $users = User::paginate(15);
+            return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
+        }else{
+            $tableName = '';
+            $show='1';
+            return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
+        }
+
     }
 
     public function showSubs()
     {
+        $show=null;
         $tableName = 'subscribed Users';
         $users = User::all();
         foreach ($users as $user) {
@@ -39,8 +49,14 @@ class DashboardController extends Controller
                 }
             }
         }
-        $users = User::paginate(15);
-        return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
+        if($show!=null){
+            $users = User::paginate(15);
+            return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
+        }else{
+            $tableName = '';
+            $show='1';
+            return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
+        }
     }
 
     public function showProducts()

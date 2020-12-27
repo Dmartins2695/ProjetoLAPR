@@ -34,7 +34,17 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
-        return $user;
+        return view('dashboard.editUser',['user'=>$user]);
+    }
+
+    public function editSub(User $user)
+    {
+        if($user->isSub()){
+            $user->deleteRole('sub');
+        }else{
+            $user->assignRole('sub');
+        }
+        return back();
     }
 
     public function update(Request $request, User $user)
@@ -44,6 +54,7 @@ class UsersController extends Controller
 
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return back();
     }
 }

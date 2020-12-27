@@ -53,12 +53,29 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->roles()->syncWithoutDetaching($role);
     }
 
+    public function deleteRole($role){
+        if(is_string($role)){
+            $role = Role::whereName($role)->firstOrFail();
+        }
+        return $this->roles()->detach($role);
+    }
+
     public function permissions(){
         return $this->roles->map->permissions->flatten()->pluck('name')->unique();
     }
 
     public function rolesNames(){
         return $this->roles->pluck('name')->all();
+    }
+
+    public function isSub(){
+        $roles = $this->rolesNames();
+        foreach ($roles as $role) {
+            if (strcmp('sub', $role) == 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
