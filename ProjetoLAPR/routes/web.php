@@ -31,16 +31,16 @@ Route::get('/dashboard/tables/products', [DashboardController::class, 'showProdu
 Route::get('/home/addToCart', [CartController::class, 'addToCart']);
 Route::get('/home/showCart', [CartController::class, 'show']);
 
-Route::get('/dashboard/tables/users/show/{user}', [UsersController::class, 'show']);
-Route::get('/dashboard/tables/users/edit/{user}', [UsersController::class, 'edit']);
-Route::post('/dashboard/tables/users/editSub/{user}', [UsersController::class, 'editSub']);
-Route::put('/dashboard/tables/users/update/{user}', [UsersController::class, 'update']);
-Route::post('/dashboard/tables/users/delete/{user}', [UsersController::class, 'destroy']);
+Route::get('/dashboard/tables/users/show/{user}', [UsersController::class, 'show'])->middleware('verified');
+Route::get('/dashboard/tables/users/edit/{user}', [UsersController::class, 'edit'])->middleware('verified');
+Route::post('/dashboard/tables/users/editSub/{user}', [UsersController::class, 'editSub'])->middleware('verified');
+Route::post('/dashboard/tables/users/update/{user}', [UsersController::class, 'update'])->middleware('verified');
+Route::post('/dashboard/tables/users/delete/{user}', [UsersController::class, 'destroy'])->middleware('verified');
 
-Route::get('/dashboard/tables/products/show/{product}', [UsersController::class, 'show']);
-Route::get('/dashboard/tables/products/edit/{product}', [UsersController::class, 'edit']);
-Route::put('/dashboard/tables/products/update/{product}', [UsersController::class, 'update']);
-Route::post('/dashboard/tables/products/delete/{product}', [UsersController::class, 'destroy']);
+Route::get('/dashboard/tables/products/show/{product}', [UsersController::class, 'show'])->middleware('verified');
+Route::get('/dashboard/tables/products/edit/{product}', [UsersController::class, 'edit'])->middleware('verified');
+Route::post('/dashboard/tables/products/update/{product}', [UsersController::class, 'update'])->middleware('verified');
+Route::post('/dashboard/tables/products/delete/{product}', [UsersController::class, 'destroy'])->middleware('verified');
 
 
 

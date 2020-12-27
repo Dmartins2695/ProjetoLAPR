@@ -49,12 +49,17 @@ class UsersController extends Controller
 
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+        $user->update($request->all());
+        return back()->with('success');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return back();
+        return back()->with('success');
     }
 }

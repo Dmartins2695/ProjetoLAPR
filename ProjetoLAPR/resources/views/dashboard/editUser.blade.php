@@ -16,9 +16,8 @@
         </div>
         <div class="row justify-content-center" style="margin-top:45px">
             <div class="col-md-4 col-md-offset-4">
-                <form method="POST" action="{{ url('/dashboard/tables/users/update/{user}',$user->id) }}">
+                <form method="POST" action="/dashboard/tables/users/update/{{$user['id']}}">
                     @csrf
-                    @method('PUT')
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                     <div class="mb">
