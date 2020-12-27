@@ -22,7 +22,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
 //        $tables = $this->tableNames();
-        return view('dashboard'/*, ['tables' => $tables]*/);
+        return view('dashboard.dashboard'/*, ['tables' => $tables]*/);
     }
 
     private function tableNames()

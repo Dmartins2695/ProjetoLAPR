@@ -15,7 +15,7 @@ class DashboardController extends Controller
 
     public function showUsers(){
         $tableName = 'users';
-        $users = User::paginate(2);
+        $users = User::paginate(15);
         foreach ($users as $user) {
             $roles = $user->rolesNames();
             foreach ($roles as $role) {
@@ -39,14 +39,14 @@ class DashboardController extends Controller
                 }
             }
         }
-        $users = User::paginate(2);
+        $users = User::paginate(15);
         return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
     }
 
     public function showProducts()
     {
         $tableName = 'products';
-        $products=Product::paginate(2);
+        $products=Product::paginate(15);
         return view('dashboard.tables', ['products' => $products, 'tableName' => $tableName]);
     }
 }

@@ -6,6 +6,6 @@
 
 @section('content')
 
-@include('includes._dashboardBar')
+@include('includes.dashboard._dashboardBar')
 
 @endsection

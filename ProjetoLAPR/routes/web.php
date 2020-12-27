@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +18,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Auth::routes(['verify'=>true]);
+Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -26,6 +28,15 @@ Route::get('/dashboard/tables/users', [DashboardController::class, 'showUsers'])
 Route::get('/dashboard/tables/products', [DashboardController::class, 'showProducts'])->middleware('verified');
 Route::get('/home/addToCart', [CartController::class, 'addToCart']);
 Route::get('/home/showCart', [CartController::class, 'show']);
+Route::get('/dashboard/tables/users/show/{user}', [UsersController::class, 'show']);
+Route::get('/dashboard/tables/users/edit/{user}', [UsersController::class, 'edit']);
+Route::put('/dashboard/tables/users/update/{user}', [UsersController::class, 'update']);
+Route::post('/dashboard/tables/users/delete/{user}', [UsersController::class, 'destroy']);
+Route::get('/dashboard/tables/products/show/{product}', [UsersController::class, 'show']);
+Route::get('/dashboard/tables/products/edit/{product}', [UsersController::class, 'edit']);
+Route::put('/dashboard/tables/products/update/{product}', [UsersController::class, 'update']);
+Route::post('/dashboard/tables/products/delete/{product}', [UsersController::class, 'destroy']);
+
 
 
 
