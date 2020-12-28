@@ -77,7 +77,6 @@
                 <th>Family</th>
                 <th>Type</th>
                 <th>Brand</th>
-                <th>Last Buy</th>
                 <th>|</th>
                 <th></th>
                 <th></th>
