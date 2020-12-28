@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
 
+    public function dashboard()
+    {
+        $this->middleware('auth');
+//        $tables = $this->tableNames();
+        return view('dashboard.dashboard'/*, ['tables' => $tables]*/);
+    }
+
     public function showUsers(){
         $show=null;
         $tableName = 'subscribed Users';

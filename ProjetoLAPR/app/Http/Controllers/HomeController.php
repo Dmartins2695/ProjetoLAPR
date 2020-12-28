@@ -18,13 +18,6 @@ class HomeController extends Controller
     }
 
 
-    public function dashboard()
-    {
-        $this->middleware('auth');
-//        $tables = $this->tableNames();
-        return view('dashboard.dashboard'/*, ['tables' => $tables]*/);
-    }
-
     private function tableNames()
     {
         $tables = \DB::select('SHOW TABLES');

@@ -23,7 +23,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard')->middleware('verified');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('verified');
 Route::get('/dashboard/tables/subs', [DashboardController::class, 'showSubs'])->middleware('verified');
 Route::get('/dashboard/tables/users', [DashboardController::class, 'showUsers'])->middleware('verified');
 Route::get('/dashboard/tables/products', [DashboardController::class, 'showProducts'])->middleware('verified');
