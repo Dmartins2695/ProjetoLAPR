@@ -16,3 +16,11 @@
         <button type="submit" class="btn btn-danger">Delete</button>
     </form>
 </td>
+<td>
+    <form action="{{route('addStock',$product->id)}}" style="width: 130px;margin: unset;" method="post">
+        @csrf
+        <button type="submit" class="btn btn-success">Add stock</button>
+        <input type="text" name="name"  class="form-control"  style="width: 22%;display: inline-table;padding: .375rem .15rem" value="0">
+    </form>
+</td>
+

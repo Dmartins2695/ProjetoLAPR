@@ -1,7 +1,7 @@
 @extends('layouts.dashLayout')
 
 @section('title')
-    Allegro | Show User
+    Dashboard | Show User
 @endsection
 
 @section('content')

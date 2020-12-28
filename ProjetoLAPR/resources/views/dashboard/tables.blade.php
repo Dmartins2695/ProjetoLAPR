@@ -81,6 +81,7 @@
                 <th>|</th>
                 <th></th>
                 <th></th>
+                <th></th>
                 <caption>List of Products</caption>
                 @foreach($products as $product)
                     <tr class="align-middle">
@@ -92,7 +93,6 @@
                         <td>{{$product['family']}}</td>
                         <td>{{$product['type']}}</td>
                         <td>{{$product['brand']}}</td>
-                        <td>{{$product['updated_at']}}</td>
                         @include('includes.dashboard._dashboardProductsTableButtons')
                     </tr>
                 @endforeach

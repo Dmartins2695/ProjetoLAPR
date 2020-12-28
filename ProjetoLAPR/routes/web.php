@@ -39,9 +39,11 @@ Route::post('/dashboard/tables/users/update/{user}', [UsersController::class, 'u
 Route::post('/dashboard/tables/users/delete/{user}', [UsersController::class, 'destroy'])->middleware('verified');
 
 Route::get('/dashboard/tables/products/create', [ProductController::class, 'create'])->name('createProduct')->middleware('verified');
+Route::post('/dashboard/tables/products/store', [ProductController::class, 'store'])->name('storeProduct')->middleware('verified');
 Route::get('/dashboard/tables/products/show/{product}', [ProductController::class, 'show'])->name('showProduct')->middleware('verified');
 Route::get('/dashboard/tables/products/edit/{product}', [ProductController::class, 'edit'])->name('editProduct')->middleware('verified');
 Route::post('/dashboard/tables/products/update/{product}', [ProductController::class, 'update'])->name('updateProduct')->middleware('verified');
+Route::post('/dashboard/tables/products/addStock/{product}', [ProductController::class, 'addStock'])->name('addStock')->middleware('verified');
 Route::post('/dashboard/tables/products/delete/{product}', [ProductController::class, 'destroy'])->name('deleteProduct')->middleware('verified');
 
 
