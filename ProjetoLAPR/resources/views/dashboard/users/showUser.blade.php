@@ -1,7 +1,7 @@
 @extends('layouts.dashLayout')
 
 @section('title')
-    Dashboard | Show User
+    Dashboard | Show {{$user->name}}
 @endsection
 
 @section('content')

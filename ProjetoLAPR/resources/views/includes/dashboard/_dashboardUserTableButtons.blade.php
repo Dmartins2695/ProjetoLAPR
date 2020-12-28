@@ -28,3 +28,9 @@
         </button>
     </form>
 </td>
+<td>
+    <form action="/dashboard/tables/users/prepareEmail/{{$user['id']}}" method="get">
+        @csrf
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</td>

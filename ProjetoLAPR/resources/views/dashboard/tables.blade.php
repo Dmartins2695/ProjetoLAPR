@@ -14,7 +14,6 @@
                 <th>Email</th>
                 <th>Email Verified</th>
                 <th>Created</th>
-                <th>Updated</th>
                 <th>|</th>
                 <th></th>
                 <th></th>
@@ -28,7 +27,6 @@
                                 <td>{{$user['email']}}</td>
                                 <td>{{$user['email_verified_at']}}</td>
                                 <td>{{$user['created_at']}}</td>
-                                <td>{{$user['updated_at']}}</td>
                                 @include('includes.dashboard._dashboardUserTableButtons')
                             </tr>
                         @endif
@@ -41,7 +39,6 @@
                 <th>Email</th>
                 <th>Email Verified</th>
                 <th>Created</th>
-                <th>Updated</th>
                 <th>|</th>
                 <th></th>
                 <th></th>
@@ -54,7 +51,6 @@
                                 <td>{{$user['name']}}</td>
                                 <td>{{$user['email']}}</td>
                                 <td>{{$user['email_verified_at']}}</td>
-                                <td>{{$user['created_at']}}</td>
                                 <td>{{$user['created_at']}}</td>
                                 @include('includes.dashboard._dashboardUserTableButtons')
                             </tr>

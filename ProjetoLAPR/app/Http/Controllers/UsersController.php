@@ -62,4 +62,11 @@ class UsersController extends Controller
         $user->delete();
         return back()->with('success');
     }
+
+    public function prepareEmail(User $user)
+    {
+        return view('dashboard.users.emailUser',['user'=>$user]);
+    }
+
+
 }

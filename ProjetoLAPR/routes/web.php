@@ -37,6 +37,7 @@ Route::get('/dashboard/tables/users/edit/{user}', [UsersController::class, 'edit
 Route::post('/dashboard/tables/users/editSub/{user}', [UsersController::class, 'editSub'])->middleware('verified');
 Route::post('/dashboard/tables/users/update/{user}', [UsersController::class, 'update'])->middleware('verified');
 Route::post('/dashboard/tables/users/delete/{user}', [UsersController::class, 'destroy'])->middleware('verified');
+Route::post('/dashboard/tables/users/prepareEmail/{user}', [UsersController::class, 'prepareEmail'])->name('prepareEmail')->middleware('verified');
 
 Route::get('/dashboard/tables/products/create', [ProductController::class, 'create'])->name('createProduct')->middleware('verified');
 Route::post('/dashboard/tables/products/store', [ProductController::class, 'store'])->name('storeProduct')->middleware('verified');
