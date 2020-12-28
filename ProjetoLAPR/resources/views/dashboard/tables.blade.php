@@ -66,6 +66,7 @@
                 @case('products')
                 <div class="container mb-3">
                     <form action="{{route('createProduct')}}" method="get">
+                        @csrf
                         <button type="submit" class="btn btn-primary">Create new Product</button>
                     </form>
                 </div>
