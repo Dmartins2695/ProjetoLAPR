@@ -1,6 +1,6 @@
 <div class="w-50 row gx-0 d-flex justify-content-evenly mx-auto mb-3">
     <div class="col-sm-2 card">
-        <img src="{{'/products/cello.jpg'}}" class="rounded card-img-top"
+        <img src="{{'/products/guitar.jpg'}}" class="rounded card-img-top"
              alt="cello">
         <div class="card-body">
             <h5 class="card-title">Card title</h5>

@@ -16,4 +16,8 @@ class Product extends Model
     public function getPriceAttribute($value){
         return $value."€";
     }
+    public function getImageAttribute($value){
+        return asset('storage/'.$value);
+    }
+
 }

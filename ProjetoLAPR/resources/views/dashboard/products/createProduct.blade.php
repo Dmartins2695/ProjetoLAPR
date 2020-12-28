@@ -18,11 +18,11 @@
             <div class="col-md-4 col-md-offset-4">
                 <form method="POST" action='{{route('storeProduct')}}'enctype="multipart/form-data">
                     @csrf
-                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Product Name') }}</label>
+                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Product name') }}</label>
 
-                    <div class="mb">
+                    <div class="mb-3">
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                               name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                               name="name" value="{{ old('name') }}" required autocomplete="name">
 
                         @error('name')
                         <span class="invalid-feedback" role="alert">

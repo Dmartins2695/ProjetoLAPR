@@ -98,7 +98,7 @@
                 {!! $products->links('pagination::bootstrap-4')!!}
                 @break
                 @default
-                <h2>No records to display in table: {{$tableName}}</h2>
+                <h2>No records to display!</h2>
             @endswitch()
 
         </table>
