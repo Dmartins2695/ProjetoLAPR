@@ -28,13 +28,13 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        return view('dashboard.showUser',['user'=>$user]);
+        return view('dashboard.users.showUser',['user'=>$user]);
     }
 
 
     public function edit(User $user)
     {
-        return view('dashboard.editUser',['user'=>$user]);
+        return view('dashboard.users.editUser',['user'=>$user]);
     }
 
     public function editSub(User $user)
