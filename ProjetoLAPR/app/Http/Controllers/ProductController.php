@@ -59,8 +59,13 @@ class ProductController extends Controller
 
     }
 
-    public function addStock(Product $product){
-
+    public function addStock(Request $request,Product $product){
+        $product->stock+=$request['addStock'];
+        if($product->stock>=0){
+            $product->save();
+            return back();
+        }
+        return back();
     }
 
     public function destroy(Product $product){
