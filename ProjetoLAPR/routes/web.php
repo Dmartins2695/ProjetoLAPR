@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
@@ -30,17 +31,18 @@ Route::get('/dashboard/tables/products', [DashboardController::class, 'showProdu
 
 Route::get('/home/addToCart', [CartController::class, 'addToCart']);
 Route::get('/home/showCart', [CartController::class, 'show']);
-
+// dar update no middleware de verified para Admin (chained ou alterar apenas)
 Route::get('/dashboard/tables/users/show/{user}', [UsersController::class, 'show'])->middleware('verified');
 Route::get('/dashboard/tables/users/edit/{user}', [UsersController::class, 'edit'])->middleware('verified');
 Route::post('/dashboard/tables/users/editSub/{user}', [UsersController::class, 'editSub'])->middleware('verified');
 Route::post('/dashboard/tables/users/update/{user}', [UsersController::class, 'update'])->middleware('verified');
 Route::post('/dashboard/tables/users/delete/{user}', [UsersController::class, 'destroy'])->middleware('verified');
 
-Route::get('/dashboard/tables/products/show/{product}', [UsersController::class, 'show'])->middleware('verified');
-Route::get('/dashboard/tables/products/edit/{product}', [UsersController::class, 'edit'])->middleware('verified');
-Route::post('/dashboard/tables/products/update/{product}', [UsersController::class, 'update'])->middleware('verified');
-Route::post('/dashboard/tables/products/delete/{product}', [UsersController::class, 'destroy'])->middleware('verified');
+Route::get('/dashboard/tables/products/create', [ProductController::class, 'create'])->name('createProduct')->middleware('verified');
+Route::get('/dashboard/tables/products/show/{product}', [ProductController::class, 'show'])->name('showProduct')->middleware('verified');
+Route::get('/dashboard/tables/products/edit/{product}', [ProductController::class, 'edit'])->name('editProduct')->middleware('verified');
+Route::post('/dashboard/tables/products/update/{product}', [ProductController::class, 'update'])->name('updateProduct')->middleware('verified');
+Route::post('/dashboard/tables/products/delete/{product}', [ProductController::class, 'destroy'])->name('deleteProduct')->middleware('verified');
 
 
 

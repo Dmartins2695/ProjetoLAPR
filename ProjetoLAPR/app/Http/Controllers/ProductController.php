@@ -14,11 +14,11 @@ class ProductController extends Controller
     }
 
     public function create(){
-
+        return view('dashboard.products.createProduct');
     }
 
     public function show(Product $product){
-
+        return view('dashboard.products.showProduct',['product' => $product]);
     }
 
     public function store(){
@@ -26,15 +26,16 @@ class ProductController extends Controller
     }
 
     public function edit(Product $product){
-
+        return view('dashboard.products.editProduct',['product' => $product]);
     }
 
     public function update(Product $product){
 
     }
 
-    public function delete(){
-
+    public function delete(Product $product){
+        $product->delete();
+        return back();
     }
 
 

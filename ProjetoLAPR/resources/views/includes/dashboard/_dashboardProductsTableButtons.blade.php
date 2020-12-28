@@ -1,15 +1,15 @@
 <td>
-    <form action="" method="get">
+    <form action="{{route('showProduct',$product->id)}}" method="get">
         <button type="submit" class="btn btn-secondary">Details</button>
     </form>
 </td>
 <td>
-    <form action="" method="get">
+    <form action="{{route('editProduct',$product->id)}}" method="get">
         <button type="submit" class="btn btn-info" style="color: white;">Edit</button>
     </form>
 </td>
 <td>
-    <form action="" method="post">
+    <form action="{{route('deleteProduct',$product->id)}}" method="post">
         <button type="submit" class="btn btn-danger">Delete</button>
     </form>
 </td>

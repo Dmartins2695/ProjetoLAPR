@@ -64,6 +64,11 @@
                 {{--                {!! $pUsers->links('pagination::bootstrap-4')!!}--}}
                 @break
                 @case('products')
+                <div class="container mb-3">
+                    <form action="{{route('createProduct')}}" method="get">
+                        <button type="submit" class="btn btn-primary">Create new Product</button>
+                    </form>
+                </div>
                 <th>Product id</th>
                 <th>Name</th>
                 <th>Stock</th>
