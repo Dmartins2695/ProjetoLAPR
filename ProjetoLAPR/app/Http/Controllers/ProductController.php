@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use PDF;
 
 class ProductController extends Controller
 {
@@ -76,7 +77,11 @@ class ProductController extends Controller
         return back();
     }
 
-
+    public function productsPdf(){
+        $products=Product::all();
+        $pdf = PDF::loadView('dashboard.products.productStocks', ['products' => $products]);
+        return $pdf->download('productStocks.pdf');
+    }
 
 
 }

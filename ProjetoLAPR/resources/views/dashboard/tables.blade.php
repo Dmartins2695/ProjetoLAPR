@@ -62,12 +62,20 @@
                 {{--                {!! $pUsers->links('pagination::bootstrap-4')!!}--}}
                 @break
                 @case('products')
-                <div class="container mb-3">
+            <div class="row">
+                <div class="col-sm-3 container mb-3">
                     <form action="{{route('createProduct')}}" method="get">
                         @csrf
-                        <button type="submit" class="btn btn-primary">Create new Product</button>
+                        <button type="submit" class="btn btn-secondary">Create new Product</button>
                     </form>
                 </div>
+                <div class="col-sm-3 container mb-3">
+                    <form action="{{route('productsPdf')}}" method="get">
+                        @csrf
+                        <button type="submit" class="btn btn-secondary">Download Stock List PDF</button>
+                    </form>
+                </div>
+            </div>
                 <th>Product id</th>
                 <th>Name</th>
                 <th>Stock</th>

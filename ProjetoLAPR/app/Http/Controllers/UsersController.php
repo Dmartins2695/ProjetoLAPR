@@ -2,28 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UsersController extends Controller
 {
-
-    public function index()
-    {
-        //
-    }
-
-
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-        //
-    }
 
 
     public function show(User $user)
@@ -68,9 +53,14 @@ class UsersController extends Controller
         return view('dashboard.users.emailUser',['user'=>$user]);
     }
 
-    public function sendEmail(User $user)
+    public function sendEmail(Request $request, User $user)
     {
-        return view('dashboard.users.emailUser',['user'=>$user]);
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+        Mail::to($user->email)->send(new ContactUser($request));
+        return  back()->with('message', 'Email sent with success!');
     }
 
 

@@ -119,6 +119,11 @@
       <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/react/promise" />
       <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/justinrainbow/json-schema" />
       <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/barryvdh/laravel-dompdf" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

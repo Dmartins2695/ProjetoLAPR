@@ -113,7 +113,7 @@
                     <label for="description" class="col-md-8 col-form-label text-md-right">{{ __('Product Description') }}</label>
 
                     <div class="mb-3">
-                        <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror"
+                        <textarea id="description" class="form-control @error('description') is-invalid @enderror"
                                   name="description" required autocomplete="description">{{ old('description') }}</textarea>
 
                         @error('description')

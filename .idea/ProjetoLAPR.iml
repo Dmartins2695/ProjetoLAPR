@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/ProjetoLAPR/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/asm89/stack-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/barryvdh/laravel-dompdf" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/barryvdh/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/brick/math" />
@@ -20,6 +21,7 @@
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/doctrine/instantiator" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/dompdf/dompdf" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/dragonmantank/cron-expression" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/facade/flare-client-php" />
@@ -51,6 +53,8 @@
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/opis/closure" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/phar-io/manifest" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/phar-io/version" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/phenx/php-font-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/phenx/php-svg-lib" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/phpdocumentor/type-resolver" />
@@ -73,6 +77,7 @@
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/ramsey/collection" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/ramsey/uuid" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/react/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/sabberworm/php-css-parser" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/sebastian/cli-parser" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/sebastian/code-unit" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/sebastian/code-unit-reverse-lookup" />
