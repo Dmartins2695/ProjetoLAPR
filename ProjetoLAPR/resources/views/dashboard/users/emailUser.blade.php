@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row justify-content-center" style="margin-top:45px">
             <div class="col-md-4 col-md-offset-4">
-                <h2 class="mx-auto">Send Email to {{$user->name}}</h2>
+                <h2 class="mx-auto">Send Email to {{ucfirst($user->name)}}</h2>
             </div>
         </div>
         <div class="row justify-content-center" style="margin-top:45px">
