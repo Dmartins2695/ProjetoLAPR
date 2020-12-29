@@ -68,5 +68,10 @@ class UsersController extends Controller
         return view('dashboard.users.emailUser',['user'=>$user]);
     }
 
+    public function sendEmail(User $user)
+    {
+        return view('dashboard.users.emailUser',['user'=>$user]);
+    }
+
 
 }
