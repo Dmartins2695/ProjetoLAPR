@@ -32,6 +32,11 @@
                                     </span>
                         @enderror
                     </div>
+                    <div class="mt">
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Update Tags') }}
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

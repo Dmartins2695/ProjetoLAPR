@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use PDF;
+use PhpParser\Node\Stmt\If_;
 
 class ProductController extends Controller
 {
@@ -53,7 +54,7 @@ class ProductController extends Controller
             $product->assignTag($tag);
         }
         $product->save();
-        return redirect('/dashboard/tables/products')->with('message', ucfirst($product->name)." was created successfully!");;
+        return redirect('/dashboard/tables/products')->with('message', ucfirst($product->name)." was created successfully!");
     }
 
     public function edit(Product $product){
@@ -119,10 +120,25 @@ class ProductController extends Controller
     }
 
     public function showEditProductTags (Product $product){
-        return view('dashboard.products.showEditProductTags',['product' => $product,'tags'=>$product->tags]);
+        $tags=Tag::all();
+        return view('dashboard.products.showEditProductTags',['product' => $product,'tags'=>$tags]);
     }
 
     public function editProductTags (Request $request,Product $product){
-        return ;
+        $request->validate([
+            'tags'=> 'required|exists:tags,name',
+            ]);
+        if (!empty($request->tags)){
+            $deltags=$product->tags;
+            foreach ($deltags as $tag){
+                $product->deleteTag($tag);
+            }
+            foreach ($request->tags as $tag){
+                $product->assignTag($tag);
+            }
+            $product->save();
+            return redirect('/dashboard/tables/products')->with('message', ucfirst($product->name)." was updated successfully!");
+        }
+        return redirect('/dashboard/tables/products')->with('messageDanger', "Tags on ".ucfirst($product->name)." were not changed");
     }
 }

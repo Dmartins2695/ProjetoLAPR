@@ -50,7 +50,7 @@ Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
     Route::post('/dashboard/tables/products/delete/{product}', [ProductController::class, 'destroy'])->name('deleteProduct');
     Route::get('/dashboard/tables/products/productStocks', [ProductController::class, 'productsPdf'])->name('productsPdf');
     Route::get('/dashboard/tables/products/showEditProductTags/{product}', [ProductController::class, 'showEditProductTags'])->name('showEditProductTags');
-    Route::get('/dashboard/tables/products/editProductTags/{product}', [ProductController::class, 'editProductTags'])->name('editProductTags');
+    Route::post('/dashboard/tables/products/editProductTags/{product}', [ProductController::class, 'editProductTags'])->name('editProductTags');
 });
 
 Route::get('/email/verify', function () {
