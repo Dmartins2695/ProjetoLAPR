@@ -68,16 +68,6 @@
         <div class="container mb-2">
             <div class="row align-items-center justify-content-center">
                 <div class="col-sm-2 text-start border-bottom">
-                    <label for="Username">Product Type</label>
-                </div>
-                <div class="col-sm-2 text-start border-bottom">
-                    {{$product->type}}
-                </div>
-            </div>
-        </div>
-        <div class="container mb-2">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-sm-2 text-start border-bottom">
                     <label for="Username">Product Stock</label>
                 </div>
                 <div class="col-sm-2 text-start border-bottom">

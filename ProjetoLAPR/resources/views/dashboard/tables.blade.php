@@ -72,8 +72,6 @@
                 <th>Name</th>
                 <th>Stock</th>
                 <th>Price</th>
-                <th>Family</th>
-                <th>Type</th>
                 <th>Brand</th>
                 <th>|</th>
                 <th></th>
@@ -87,8 +85,6 @@
                         <td>{{$product['name']}}</td>
                         <td>{{$product['stock']}}</td>
                         <td>{{$product['price']}}</td>
-                        <td>{{$product['family']}}</td>
-                        <td>{{$product['type']}}</td>
                         <td>{{$product['brand']}}</td>
                         @include('includes.dashboard._dashboardProductsTableButtons')
                     </tr>

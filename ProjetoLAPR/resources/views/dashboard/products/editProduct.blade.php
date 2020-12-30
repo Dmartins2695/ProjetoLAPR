@@ -58,20 +58,6 @@
                         @enderror
                     </div>
 
-
-                    <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Product Type') }}</label>
-
-                    <div class="mb-3">
-                        <input id="type" type="text" class="form-control @error('type') is-invalid @enderror"
-                               name="type" value="{{ $product->type }}" required autocomplete="type">
-
-                        @error('type')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
-                    </div>
-
                     <label for="brand" class="col-md-4 col-form-label text-md-right">{{ __('Product Brand') }}</label>
 
                     <div class="mb-3">
