@@ -20,4 +20,32 @@ class Product extends Model
         return asset('storage/'.$value);
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+    public function assignTag($tag){
+        if(is_string($tag)){
+            $tag = Tag::whereName($tag)->firstOrFail();
+        }
+        $this->tags()->syncWithoutDetaching($tag);
+    }
+
+    public function deleteTag($tag){
+        if(is_string($tag)){
+            $tag = Tag::whereName($tag)->firstOrFail();
+        }
+        $this->tags()->detach($tag);
+    }
+
+    public function hasTag($tagName){
+        $tags=$this->tags;
+        foreach ($tags as $tag) {
+            if (strcmp($tag->name, $tagName)==0){
+                return true;
+            }
+        }
+        return false;
+    }
 }
