@@ -34,7 +34,7 @@ class DashboardController extends Controller
             }
         }
         $show=collect($show);
-        $showp=CollectionHelper::paginate($show,2);
+        $showp=CollectionHelper::paginate($show,5);
         if($show!=null){
             return view('dashboard.tables', ['users' => $showp,'tableName' => $tableName]);
         }else{
@@ -59,7 +59,7 @@ class DashboardController extends Controller
             }
         }
         $show=collect($show);
-        $showp=CollectionHelper::paginate($show,3);
+        $showp=CollectionHelper::paginate($show,5);
         if($show!=null){
             return view('dashboard.tables', ['users' => $showp,'tableName' => $tableName]);
         }else{
@@ -72,7 +72,7 @@ class DashboardController extends Controller
     public function showProducts()
     {
         $tableName = 'products';
-        $products=Product::paginate(15);
+        $products=Product::paginate(5);
         return view('dashboard.tables', ['products' => $products, 'tableName' => $tableName]);
     }
 }

@@ -49,6 +49,7 @@ Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
     Route::post('/dashboard/tables/products/addStock/{product}', [ProductController::class, 'addStock'])->name('addStock');
     Route::post('/dashboard/tables/products/delete/{product}', [ProductController::class, 'destroy'])->name('deleteProduct');
     Route::get('/dashboard/tables/products/productStocks', [ProductController::class, 'productsPdf'])->name('productsPdf');
+    Route::get('/dashboard/tables/products/editProductTags', [ProductController::class, 'editProductTags'])->name('editProductTags');
 });
 
 Route::get('/email/verify', function () {
