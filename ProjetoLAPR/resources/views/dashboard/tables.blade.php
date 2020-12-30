@@ -84,6 +84,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                     <caption>List of Products</caption>
                     @foreach($products as $product)
                         <tr class="align-middle">
