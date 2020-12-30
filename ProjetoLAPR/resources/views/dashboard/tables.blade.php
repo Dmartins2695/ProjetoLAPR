@@ -20,9 +20,7 @@
                 <th></th>
                 <th></th>
                 <caption>List of Subscribed Users</caption>
-                @foreach($pUsers as $pUser)
                     @foreach($users as $user)
-                        @if($pUser->name===$user->name)
                             <tr class="align-middle">
                                 <td>{{$user['name']}}</td>
                                 <td>{{$user['email']}}</td>
@@ -30,10 +28,8 @@
                                 <td>{{$user['created_at']}}</td>
                                 @include('includes.dashboard._dashboardUserTableButtons')
                             </tr>
-                        @endif
                     @endforeach
-                @endforeach
-                {!! $pUsers->links('pagination::bootstrap-4')!!}
+                {!! $users->onEachSide(2)->links('pagination::bootstrap-4')!!}
                 @break
                 @case('users')
                 <th>Name</th>
@@ -46,9 +42,7 @@
                 <th></th>
                 <th></th>
                 <caption>List of Users</caption>
-                @foreach($pUsers as $pUser)
                     @foreach($users as $user)
-                        @if($pUser->name===$user->name)
                             <tr class="align-middle">
                                 <td>{{$user['name']}}</td>
                                 <td>{{$user['email']}}</td>
@@ -56,10 +50,8 @@
                                 <td>{{$user['created_at']}}</td>
                                 @include('includes.dashboard._dashboardUserTableButtons')
                             </tr>
-                        @endif
                     @endforeach
-                @endforeach
-                {{--                {!! $pUsers->links('pagination::bootstrap-4')!!}--}}
+                {!! $users->onEachSide(2)->links('pagination::bootstrap-4')!!}
                 @break
                 @case('products')
             <div class="row">

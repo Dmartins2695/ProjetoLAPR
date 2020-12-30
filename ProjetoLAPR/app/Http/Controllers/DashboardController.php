@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CollectionHelper;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class DashboardController extends Controller
     }
 
     public function showUsers(){
-        $show=null;
+         $show=array();
         $tableName = 'subscribed Users';
         $users = User::all();
         foreach ($users as $user) {
@@ -32,13 +33,14 @@ class DashboardController extends Controller
                 }
             }
         }
+        $show=collect($show);
+        $showp=CollectionHelper::paginate($show,2);
         if($show!=null){
-            $users = User::paginate(15);
-            return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
+            return view('dashboard.tables', ['users' => $showp,'tableName' => $tableName]);
         }else{
             $tableName = '';
             $show='1';
-            return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
+            return view('dashboard.tables', ['users' => $showp, 'pUsers'=>$users,'tableName' => $tableName]);
         }
 
     }
@@ -56,13 +58,14 @@ class DashboardController extends Controller
                 }
             }
         }
+        $show=collect($show);
+        $showp=CollectionHelper::paginate($show,3);
         if($show!=null){
-            $users = User::paginate(15);
-            return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
+            return view('dashboard.tables', ['users' => $showp,'tableName' => $tableName]);
         }else{
             $tableName = '';
             $show='1';
-            return view('dashboard.tables', ['users' => $show, 'pUsers'=>$users,'tableName' => $tableName]);
+            return view('dashboard.tables', ['users' => $showp,'tableName' => $tableName]);
         }
     }
 
