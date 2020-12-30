@@ -24,7 +24,7 @@ class UsersController extends Controller
 
     public function editSub(User $user)
     {
-        if($user->isSub()){
+        if($user->hasRole('sub')){
             $user->deleteRole('sub');
             return back()->with('messageDanger', ucfirst($user->name)." is no longer a Subscriber!");
         }
