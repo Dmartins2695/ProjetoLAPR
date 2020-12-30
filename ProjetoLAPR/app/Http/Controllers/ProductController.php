@@ -118,7 +118,11 @@ class ProductController extends Controller
         return $pdf->download('productStocks.pdf');
     }
 
-    public function editProductTags (){
-        
+    public function showEditProductTags (Product $product){
+        return view('dashboard.products.showEditProductTags',['product' => $product,'tags'=>$product->tags]);
+    }
+
+    public function editProductTags (Request $request,Product $product){
+        return ;
     }
 }

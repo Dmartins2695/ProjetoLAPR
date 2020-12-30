@@ -25,14 +25,6 @@
                     </button>
                 </form>
             </div>
-            <div class="container mb-2">
-                <form action="{{route('editProductTags')}}" method="get">
-                    @csrf
-                    <button type="submit" class="btn btn-secondary">
-                        Products Tags Edit
-                    </button>
-                </form>
-            </div>
         </div>
         @endif
         <div {{$tableName==='products'?"class=col-md-10 style=width:82rem":"class=container"}}>
