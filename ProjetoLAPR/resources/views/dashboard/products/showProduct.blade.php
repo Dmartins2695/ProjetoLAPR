@@ -56,10 +56,12 @@
         <div class="container mb-2">
             <div class="row align-items-center justify-content-center">
                 <div class="col-sm-2 text-start border-bottom">
-                    <label for="Username">Product Family</label>
+                    <label for="Username">Product Tags</label>
                 </div>
                 <div class="col-sm-2 text-start border-bottom">
-                    {{$product->family}}
+                    @foreach($tags as $tag)
+                        {{$tag->name.", "}}
+                    @endforeach
                 </div>
             </div>
         </div>
