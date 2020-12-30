@@ -117,4 +117,8 @@ class ProductController extends Controller
         $pdf = PDF::loadView('dashboard.products.productStocks', ['products' => $products]);
         return $pdf->download('productStocks.pdf');
     }
+
+    public function editProductTags (){
+        
+    }
 }

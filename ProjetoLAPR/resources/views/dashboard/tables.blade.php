@@ -21,7 +21,7 @@
                 <form action="{{route('productsPdf')}}" method="get">
                     @csrf
                     <button type="submit" class="btn btn-secondary">
-                        Stock PDF
+                        Download Stock PDF
                     </button>
                 </form>
             </div>
@@ -29,7 +29,7 @@
                 <form action="{{route('editProductTags')}}" method="get">
                     @csrf
                     <button type="submit" class="btn btn-secondary">
-                        Products
+                        Products Tags Edit
                     </button>
                 </form>
             </div>
