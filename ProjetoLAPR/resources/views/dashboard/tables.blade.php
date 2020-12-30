@@ -72,7 +72,7 @@
                 <div class="col-sm-3 container mb-3">
                     <form action="{{route('productsPdf')}}" method="get">
                         @csrf
-                        <button type="submit" class="btn btn-secondary">Download Stock List PDF</button>
+                        <button type="submit" class="btn btn-secondary" >Download Stock List PDF</button>
                     </form>
                 </div>
             </div>

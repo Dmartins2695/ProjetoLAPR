@@ -31,6 +31,7 @@ Route::get('/dashboard/tables/products', [DashboardController::class, 'showProdu
 
 Route::get('/home/addToCart', [CartController::class, 'addToCart']);
 Route::get('/home/showCart', [CartController::class, 'show']);
+
 // dar update no middleware de verified para Admin (chained ou alterar apenas)
 Route::get('/dashboard/tables/users/show/{user}', [UsersController::class, 'show'])->middleware('verified');
 Route::get('/dashboard/tables/users/edit/{user}', [UsersController::class, 'edit'])->middleware('verified');
