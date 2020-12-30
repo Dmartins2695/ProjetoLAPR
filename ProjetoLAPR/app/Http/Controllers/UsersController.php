@@ -31,7 +31,6 @@ class UsersController extends Controller
 
         $user->assignRole('sub');
         return back()->with('message', ucfirst($user->name)." is now a Subscriber!");
-
     }
 
     public function update(Request $request, User $user)

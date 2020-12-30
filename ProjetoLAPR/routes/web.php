@@ -21,36 +21,36 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('verified');
-Route::get('/dashboard/tables/subs', [DashboardController::class, 'showSubs'])->middleware('verified');
-Route::get('/dashboard/tables/users', [DashboardController::class, 'showUsers'])->middleware('verified');
-Route::get('/dashboard/tables/products', [DashboardController::class, 'showProducts'])->middleware('verified');
-
 Route::get('/home/addToCart', [CartController::class, 'addToCart']);
 Route::get('/home/showCart', [CartController::class, 'show']);
 
-// dar update no middleware de verified para Admin (chained ou alterar apenas)
-Route::get('/dashboard/tables/users/show/{user}', [UsersController::class, 'show'])->middleware('verified');
-Route::get('/dashboard/tables/users/edit/{user}', [UsersController::class, 'edit'])->middleware('verified');
-Route::post('/dashboard/tables/users/editSub/{user}', [UsersController::class, 'editSub'])->middleware('verified');
-Route::post('/dashboard/tables/users/update/{user}', [UsersController::class, 'update'])->middleware('verified');
-Route::post('/dashboard/tables/users/delete/{user}', [UsersController::class, 'destroy'])->middleware('verified');
-Route::get('/dashboard/tables/users/prepareEmail/{user}', [UsersController::class, 'prepareEmail'])->name('prepareEmail')->middleware('verified');
-Route::post('/dashboard/tables/users/sendEmail/{user}', [UsersController::class, 'sendEmail'])->name('sendEmail')->middleware('verified');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard/tables/products/create', [ProductController::class, 'create'])->name('createProduct')->middleware('verified');
-Route::post('/dashboard/tables/products/store', [ProductController::class, 'store'])->name('storeProduct')->middleware('verified');
-Route::get('/dashboard/tables/products/show/{product}', [ProductController::class, 'show'])->name('showProduct')->middleware('verified');
-Route::get('/dashboard/tables/products/edit/{product}', [ProductController::class, 'edit'])->name('editProduct')->middleware('verified');
-Route::post('/dashboard/tables/products/update/{product}', [ProductController::class, 'update'])->name('updateProduct')->middleware('verified');
-Route::post('/dashboard/tables/products/addStock/{product}', [ProductController::class, 'addStock'])->name('addStock')->middleware('verified');
-Route::post('/dashboard/tables/products/delete/{product}', [ProductController::class, 'destroy'])->name('deleteProduct')->middleware('verified');
-Route::get('/dashboard/tables/products/productStocks', [ProductController::class, 'productsPdf'])->name('productsPdf')->middleware('verified');
+Route::middleware(['auth', 'verified'])->group(function () {
+    // dar update no middleware de verified para Admin (chained ou alterar apenas)
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard/tables/subs', [DashboardController::class, 'showSubs']);
+    Route::get('/dashboard/tables/users', [DashboardController::class, 'showUsers']);
+    Route::get('/dashboard/tables/products', [DashboardController::class, 'showProducts']);
 
+    Route::get('/dashboard/tables/users/show/{user}', [UsersController::class, 'show']);
+    Route::get('/dashboard/tables/users/edit/{user}', [UsersController::class, 'edit']);
+    Route::post('/dashboard/tables/users/editSub/{user}', [UsersController::class, 'editSub']);
+    Route::post('/dashboard/tables/users/update/{user}', [UsersController::class, 'update']);
+    Route::post('/dashboard/tables/users/delete/{user}', [UsersController::class, 'destroy']);
+    Route::get('/dashboard/tables/users/prepareEmail/{user}', [UsersController::class, 'prepareEmail'])->name('prepareEmail');
+    Route::post('/dashboard/tables/users/sendEmail/{user}', [UsersController::class, 'sendEmail'])->name('sendEmail');
 
+    Route::get('/dashboard/tables/products/create', [ProductController::class, 'create'])->name('createProduct');
+    Route::post('/dashboard/tables/products/store', [ProductController::class, 'store'])->name('storeProduct');
+    Route::get('/dashboard/tables/products/show/{product}', [ProductController::class, 'show'])->name('showProduct');
+    Route::get('/dashboard/tables/products/edit/{product}', [ProductController::class, 'edit'])->name('editProduct');
+    Route::post('/dashboard/tables/products/update/{product}', [ProductController::class, 'update'])->name('updateProduct');
+    Route::post('/dashboard/tables/products/addStock/{product}', [ProductController::class, 'addStock'])->name('addStock');
+    Route::post('/dashboard/tables/products/delete/{product}', [ProductController::class, 'destroy'])->name('deleteProduct');
+    Route::get('/dashboard/tables/products/productStocks', [ProductController::class, 'productsPdf'])->name('productsPdf');
+});
 
 
 Route::get('/email/verify', function () {
@@ -68,10 +68,4 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
-
-
-
-
-
 
