@@ -52,7 +52,7 @@ class ProductController extends Controller
             'image' => $image['image'],
         ]);
         $product->save();
-        return redirect('/dashboard/tables/products');
+        return redirect('/dashboard/tables/products')->with('message', ucfirst($product->name)." was created successfully!");;
     }
 
     public function edit(Product $product){
@@ -99,21 +99,21 @@ class ProductController extends Controller
             ]);
         }
 
-        return back()->with('success');
+        return back()->with('message', ucfirst($product->name).": Updated with success!");
     }
 
     public function addStock(Request $request,Product $product){
         $product->stock+=$request['addStock'];
         if($product->stock>=0){
             $product->save();
-            return back();
+            return back()->with('message', ucfirst($product->name)." stock was change to: ".$product->stock);
         }
-        return back();
+        return back()->with('messageDanger', ucfirst($product->name)." Can't have negative stock!!" );
     }
 
     public function destroy(Product $product){
         $product->delete();
-        return back();
+        return back()->with('messageDanger', ucfirst($product->name).": Deleted from database!");
     }
 
     public function productsPdf(){

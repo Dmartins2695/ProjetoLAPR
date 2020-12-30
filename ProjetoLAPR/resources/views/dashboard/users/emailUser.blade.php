@@ -51,9 +51,6 @@
                         </button>
                     </div>
                 </form>
-                @if(session('message'))
-                    <p class="text-success text-xs mt-2">{{session('message')}}</p>
-                @endif
             </div>
         </div>
     </div>

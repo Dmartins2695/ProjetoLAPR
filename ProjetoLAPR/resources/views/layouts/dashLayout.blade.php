@@ -26,6 +26,12 @@
 <body>
 @include('includes._navbar')
 <div id="app">
+    @if(session('message'))
+        <div class='alert alert-success' role='alert'>{{session('message')}}</div>
+    @endif
+        @if(session('messageDanger'))
+            <div class='alert alert-danger' role='alert'>{{session('messageDanger')}}</div>
+        @endif
     <main class="py-4">
         @yield('content')
     </main>
