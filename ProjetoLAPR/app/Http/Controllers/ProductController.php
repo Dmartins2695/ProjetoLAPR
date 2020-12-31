@@ -150,4 +150,9 @@ class ProductController extends Controller
         $products=CollectionHelper::paginate($products,3);
         return view('home',['products'=>$products]);
     }
+
+    public function showDetails(Product $product){
+        $tags=$product->tags;
+        return view('includes.showDetailsProduct',['product'=>$product,'tags'=>$tags]);
+    }
 }

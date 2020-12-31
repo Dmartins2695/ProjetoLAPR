@@ -13,14 +13,14 @@
                                 <p class="card-text">{{ucfirst($product->description)}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="{{url('/home/addToCart')}}">
+                                        <a href="{{route('addToCart')}}">
                                             <button type="button" class="btn btn-sm btn-outline-secondary"
                                                     style="border-right: unset;border-radius: unset;">
                                                 <img src="{{asset('shopping-cart.png')}}" alt="">
                                                 Add Cart
                                             </button>
                                         </a>
-                                        <a href="">
+                                        <a href="{{route('showDetails',$product->id)}}">
                                             <button type="button" class="btn btn-sm btn-outline-secondary"
                                                     style="border-radius: unset;">View
                                             </button>
