@@ -17,14 +17,13 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <!-- Authentication Links -->
+                <li class="class">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Find Something" aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    </form>
+                </li>
                 @guest
-
-                    <li class="class">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Find Something" aria-label="Search">
-                            <button class="btn btn-outline-secondary" type="submit">Search</button>
-                        </form>
-                    </li>
                     @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link  {{Request::path() === "login" ? "active":""}}"
@@ -41,7 +40,7 @@
                 @else
                     <li class="nav-item">
                         <a class="nav-link" aria-haspopup="true" aria-expanded="false"
-                           href="#">
+                           href="{{--SETTINGS--}}">
                             {{ ucfirst(Auth::user()->name) }}
                         </a>
                     </li>
@@ -63,7 +62,6 @@
                             @csrf
                         </form>
                     </li>
-
                 @endguest
                 <li class="nav-item">
                     <a class="nav-link  {{Request::path() === "cart" ? "active":""}}"

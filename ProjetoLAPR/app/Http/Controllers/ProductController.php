@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CollectionHelper;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -140,5 +141,13 @@ class ProductController extends Controller
             return redirect('/dashboard/tables/products')->with('message', ucfirst($product->name)." was updated successfully!");
         }
         return redirect('/dashboard/tables/products')->with('messageDanger', "Tags on ".ucfirst($product->name)." were not changed");
+    }
+
+    public function productFilter($tag){
+        $products=Product::whereHas('tags', function($q) use ($tag) {
+            $q->where('name', '=', $tag);
+        })->get();
+        $products=CollectionHelper::paginate($products,3);
+        return view('home',['products'=>$products]);
     }
 }

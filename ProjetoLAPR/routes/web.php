@@ -26,6 +26,8 @@ Route::get('/home/showCart', [CartController::class, 'show']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home/{tag}', [ProductController::class, 'productFilter'])->name('productFilter');
 
 Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');

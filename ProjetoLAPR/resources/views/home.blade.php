@@ -8,13 +8,13 @@
     <div class="container">
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-around">
-                <a class="p-2 text-muted" href="#">Strings</a>
-                <a class="p-2 text-muted" href="#">Keys</a>
-                <a class="p-2 text-muted" href="#">Drums</a>
+                <a class="p-2 text-muted" href="{{route('productFilter','cordas')}}">Strings</a>
+                <a class="p-2 text-muted" href="{{route('productFilter','teclas')}}">Keys</a>
+                <a class="p-2 text-muted" href="{{route('productFilter','drums')}}">Drums</a>
             </nav>
         </div>
     </div>
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" style="height: 30vw;">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height: 30vw;">
         <ol class="carousel-indicators">
             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
@@ -39,7 +39,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </a>
-
+    </div>
     <main role="main">
         @include('includes.showProducts')
     </main>
