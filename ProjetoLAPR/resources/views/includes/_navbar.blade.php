@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}"
-           style="font-family: 'French Script MT'; font-size: 30px; padding-top: 0; padding-bottom: 0;">Allegro</a>
+           style="font-family: 'French Script MT'; font-size: 30px; padding-top: 0; padding-bottom: 0;"><img
+                src="{{asset('logo1.png')}}"
+                alt="logo" style="width: 50%"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -10,13 +12,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav  me-auto">
-
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <!-- Authentication Links -->
                 @guest
+
+                    <li class="class">
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Find Something" aria-label="Search">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </form>
+                    </li>
                     @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link  {{Request::path() === "login" ? "active":""}}"
@@ -33,7 +41,7 @@
                 @else
                     <li class="nav-item">
                         <a class="nav-link" aria-haspopup="true" aria-expanded="false"
-                        href="#">
+                           href="#">
                             {{ ucfirst(Auth::user()->name) }}
                         </a>
                     </li>
@@ -55,6 +63,7 @@
                             @csrf
                         </form>
                     </li>
+
                 @endguest
                 <li class="nav-item">
                     <a class="nav-link  {{Request::path() === "cart" ? "active":""}}"

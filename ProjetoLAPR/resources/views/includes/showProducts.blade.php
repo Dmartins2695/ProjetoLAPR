@@ -7,10 +7,10 @@
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top"
                                  src="{{$product->image}}"
-                                 alt="{{$product->name}}" style="width: 100%; height: 15vw; object-fit: cover">
-                            <div class="card-body">
-                                <h6>{{$product->name}}</h6>
-                                <p class="card-text">{{$product->description}}</p>
+                                 alt="{{ucfirst($product->name)}}" style="width: 100%; height: 15vw; object-fit: cover">
+                            <div class="card-body" style="padding: 1rem 0.8rem">
+                                <h6>{{ucfirst($product->name)}}</h6>
+                                <p class="card-text">{{ucfirst($product->description)}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="{{url('/home/addToCart')}}">
