@@ -1,6 +1,6 @@
-@foreach($products->chunk(3) as $chunk)
     <div class="album py-5 bg-light">
         <div class="container">
+            @foreach($products->chunk(3) as $chunk)
             <div class="row">
                 @foreach($chunk as $product)
                     <div class="col-md-4">
@@ -33,6 +33,9 @@
                     </div>
                 @endforeach
             </div>
+            @endforeach
+                <div class="container">
+                    {!! $products->links('pagination::bootstrap-4') !!}
+                </div>
         </div>
     </div>
-@endforeach
