@@ -18,9 +18,12 @@
             <ul class="navbar-nav mr-auto">
                 <!-- Authentication Links -->
                 <li class="class">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Find Something" aria-label="Search">
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    <form class="d-flex" method="post" role="search">
+                        @csrf
+                        <div class="input-group">
+                            <input class="form-control " type="search" placeholder="Find Something" aria-label="Search">
+                            <button  id="button-addon1" class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div>
                     </form>
                 </li>
                 @guest
