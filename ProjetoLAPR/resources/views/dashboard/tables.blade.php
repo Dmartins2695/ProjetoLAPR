@@ -25,6 +25,14 @@
                     </button>
                 </form>
             </div>
+            <div class="container mb-2">
+                <form action="{{route('tagMenu')}}" method="get">
+                    @csrf
+                    <button type="submit" class="btn btn-secondary">
+                        Create new Tag
+                    </button>
+                </form>
+            </div>
         </div>
         @endif
         <div {{$tableName==='products'?"class=col-md-10 style=width:82rem":"class=container"}}>

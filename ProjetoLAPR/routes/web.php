@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,12 @@ Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
     Route::get('/dashboard/tables/products/productStocks', [ProductController::class, 'productsPdf'])->name('productsPdf');
     Route::get('/dashboard/tables/products/showEditProductTags/{product}', [ProductController::class, 'showEditProductTags'])->name('showEditProductTags');
     Route::post('/dashboard/tables/products/editProductTags/{product}', [ProductController::class, 'editProductTags'])->name('editProductTags');
+
+    Route::get('/dashboard/tables/products/tags', [TagsController::class, 'index'])->name('tagMenu');
+    Route::post('/dashboard/tables/products/tags/storeTag', [TagsController::class, 'store'])->name('storeTag');
+    Route::post('/dashboard/tables/products/tags/deleteTag', [TagsController::class, 'destroy'])->name('deleteTag');
+
+
 });
 
 Route::get('/email/verify', function () {
