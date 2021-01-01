@@ -16,7 +16,7 @@
         </div>
         <div class="row justify-content-center" style="margin-top:20px">
             <div class="col-md-4 col-md-offset-4">
-                <form method="POST" action='{{route('storeProduct')}}'enctype="multipart/form-data">
+                <form method="POST" action='{{route('storeProduct')}}' enctype="multipart/form-data">
                     @csrf
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Product name') }}</label>
 

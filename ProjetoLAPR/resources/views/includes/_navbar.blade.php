@@ -18,10 +18,10 @@
             <ul class="navbar-nav mr-auto">
                 <!-- Authentication Links -->
                 <li class="class">
-                    <form class="d-flex" method="post" role="search">
+                    <form class="d-flex" action='{{route('searchBar')}}' method="GET" role="search">
                         @csrf
                         <div class="input-group">
-                            <input class="form-control " type="search" placeholder="Find Something" aria-label="Search">
+                            <input name='q' class="form-control" type="search" placeholder="Find Something" aria-label="Search">
                             <button  id="button-addon1" class="btn btn-outline-secondary" type="submit">Search</button>
                         </div>
                     </form>

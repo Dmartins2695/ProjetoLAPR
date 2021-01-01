@@ -26,9 +26,9 @@ Route::get('/home/addToCart', [CartController::class, 'addToCart'])->name('addTo
 Route::get('/home/showCart', [CartController::class, 'show'])->name('showCart');
 
 Route::get('/home/showDetails/{product}', [ProductController::class, 'showDetails'])->name('showDetails');
+Route::get('/home/search', [ProductController::class, 'searchBar'])->name('searchBar');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home/{tag}', [ProductController::class, 'productFilter'])->name('productFilter');
 
