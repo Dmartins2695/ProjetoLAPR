@@ -19,7 +19,6 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Auth::routes(['verify' => true]);
 
 Route::get('/home/addToCart/{product}', [CartController::class, 'addToCart'])->name('addToCart');
@@ -36,6 +35,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home/{tag}', [ProductController::class, 'productFilter'])->name('productFilter');
 
 Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
+
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/dashboard/tables/subs', [DashboardController::class, 'showSubs']);
     Route::get('/dashboard/tables/users', [DashboardController::class, 'showUsers']);
@@ -63,8 +63,6 @@ Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
     Route::get('/dashboard/tables/products/tags', [TagsController::class, 'index'])->name('tagMenu');
     Route::post('/dashboard/tables/products/tags/storeTag', [TagsController::class, 'store'])->name('storeTag');
     Route::post('/dashboard/tables/products/tags/deleteTag', [TagsController::class, 'destroy'])->name('deleteTag');
-
-
 });
 
 Route::get('/email/verify', function () {
