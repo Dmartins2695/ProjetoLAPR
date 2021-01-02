@@ -53,6 +53,9 @@ class CartController extends Controller
             $prov[0]->rowId=$r->rowId;
             $cart[]=$prov[0];
         }
-        return $cart;
+        if(isset($cart)){
+            return $cart;
+        }
+        return null;
     }
 }
