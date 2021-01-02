@@ -24,12 +24,13 @@ class UsersController extends Controller
 
     public function editSub(User $user)
     {
-        if($user->isSub()){
+        if($user->hasRole('sub')){
             $user->deleteRole('sub');
-        }else{
-            $user->assignRole('sub');
+            return back()->with('messageDanger', ucfirst($user->name)." is no longer a Subscriber!");
         }
-        return back();
+
+        $user->assignRole('sub');
+        return back()->with('message', ucfirst($user->name)." is now a Subscriber!");
     }
 
     public function update(Request $request, User $user)
@@ -39,13 +40,14 @@ class UsersController extends Controller
             'email' => 'required|email',
         ]);
         $user->update($request->all());
-        return back()->with('success');
+        return back()->with('message', ucfirst($user->name).": Updated with success!");
     }
 
     public function destroy(User $user)
     {
+        $name=ucfirst($user->name);
         $user->delete();
-        return back()->with('success');
+        return back()->with('messageDanger', "$name: Deleted from database!");
     }
 
     public function prepareEmail(User $user)
@@ -60,7 +62,7 @@ class UsersController extends Controller
             'body' => 'required',
         ]);
         Mail::to($user->email)->send(new ContactUser($request));
-        return  back()->with('message', 'Email sent with success!');
+        return  back()->with('message', 'Email sent with success to: '.$user->email);
     }
 
 

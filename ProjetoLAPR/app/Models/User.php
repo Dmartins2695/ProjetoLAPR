@@ -60,6 +60,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->roles()->detach($role);
     }
 
+    public function hasRole($roleName){
+        $roles=$this->roles;
+        foreach ($roles as $role) {
+            if (strcmp($role->name, $roleName)==0){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function permissions(){
         return $this->roles->map->permissions->flatten()->pluck('name')->unique();
     }
@@ -77,5 +87,17 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return false;
     }
+
+    public function isAdmin(){
+        $roles = $this->rolesNames();
+        foreach ($roles as $role) {
+            if (strcmp('admin', $role) == 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
 }

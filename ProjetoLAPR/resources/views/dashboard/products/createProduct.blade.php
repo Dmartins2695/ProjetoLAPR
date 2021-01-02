@@ -16,7 +16,7 @@
         </div>
         <div class="row justify-content-center" style="margin-top:20px">
             <div class="col-md-4 col-md-offset-4">
-                <form method="POST" action='{{route('storeProduct')}}'enctype="multipart/form-data">
+                <form method="POST" action='{{route('storeProduct')}}' enctype="multipart/form-data">
                     @csrf
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Product name') }}</label>
 
@@ -58,26 +58,16 @@
                         @enderror
                     </div>
 
-                    <label for="family" class="col-md-4 col-form-label text-md-right">{{ __('Product Family') }}</label>
+                    <label for="family" class="col-md-4 col-form-label text-md-right">{{ __('Product Tags') }}</label>
 
                     <div class="mb-3">
-                        <input id="family" type="text" class="form-control @error('family') is-invalid @enderror"
-                               name="family" value="{{ old('family') }}" required autocomplete="family">
-
-                        @error('family')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
-                    </div>
-
-                    <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Product Type') }}</label>
-
-                    <div class="mb-3">
-                        <input id="type" type="text" class="form-control @error('type') is-invalid @enderror"
-                               name="type" value="{{ old('type') }}" required autocomplete="type">
-
-                        @error('type')
+                        <select id="tags" class="col-sm-4 custom-select @error('tags') is-invalid @enderror" multiple
+                                name="tags[]" required autocomplete="tags">
+                            @foreach($tags as $tag)
+                            <option value="{{$tag->name}}" >{{$tag->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('tags')
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

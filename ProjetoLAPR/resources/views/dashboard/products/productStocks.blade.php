@@ -39,7 +39,6 @@
             <th>Name</th>
             <th>Stock</th>
             <th>Price</th>
-            <th>Type</th>
             <th>Brand</th>
             </tr>
             @foreach($products as $product)
@@ -48,7 +47,6 @@
                     <td>{{$product['name']}}</td>
                     <td>{{$product['stock']}}</td>
                     <td>{{$product['price']}}</td>
-                    <td>{{$product['type']}}</td>
                     <td>{{$product['brand']}}</td>
                 </tr>
             @endforeach

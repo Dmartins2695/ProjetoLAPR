@@ -11,6 +11,14 @@
     </form>
 </td>
 <td>
+    <form action="{{route('showEditProductTags',$product->id)}}" method="get">
+        @csrf
+        <button type="submit" class="btn btn-outline-info" style="border: 0px;">
+            Tags Edit
+        </button>
+    </form>
+</td>
+<td>
     <form action="{{route('deleteProduct',$product->id)}}" method="post">
         @csrf
         <button type="submit" class="btn btn-outline-danger" style="border: 0px;">Delete</button>
