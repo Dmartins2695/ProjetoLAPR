@@ -124,6 +124,8 @@
       <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/dompdf/dompdf" />
       <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/darryldecode/cart" />
+      <path value="$PROJECT_DIR$/ProjetoLAPR/vendor/hardevine/shoppingcart" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

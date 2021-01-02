@@ -70,6 +70,7 @@
                     <a class="nav-link  {{Request::path() === "cart" ? "active":""}}"
                        href="{{ url('/home/showCart') }}"><span><img src="{{asset('nav-cart.png')}}" alt="cart">{{ __('Cart') }}</span></a>
                 </li>
+                @include('includes._cart')
             </ul>
         </div>
     </div>

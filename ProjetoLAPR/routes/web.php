@@ -22,8 +22,11 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+Route::get('/home/addToCart/{product}', [CartController::class, 'addToCart'])->name('addToCart');
 Route::get('/home/showCart', [CartController::class, 'show'])->name('showCart');
+Route::get('/home/cart/checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::get('/home/deleteItem/{rowId}', [CartController::class, 'delete'])->name('deleteItem');
+Route::get('/home/updateItem/{rowId}', [CartController::class, 'update'])->name('updateItem');
 
 Route::get('/home/showDetails/{product}', [ProductController::class, 'showDetails'])->name('showDetails');
 Route::get('/home/search', [ProductController::class, 'searchBar'])->name('searchBar');

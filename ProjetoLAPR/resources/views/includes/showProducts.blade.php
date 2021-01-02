@@ -14,7 +14,7 @@
                                 <p class="card-text">{{ucfirst($product->description)}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="{{route('addToCart')}}">
+                                        <a href="{{route('addToCart',$product->id)}}">
                                             <button type="button" class="btn btn-sm btn-outline-secondary"
                                                     style="border-right: unset;border-radius: unset;">
                                                 <img src="{{asset('shopping-cart.png')}}" alt="">
