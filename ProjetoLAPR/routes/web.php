@@ -28,8 +28,8 @@ Route::get('/home/cart/checkout', [CartController::class, 'checkout'])->name('ch
 Route::get('/home/deleteItem/{rowId}', [CartController::class, 'delete'])->name('deleteItem');
 Route::get('/home/updateItem/{rowId}', [CartController::class, 'update'])->name('updateItem');
 
-Route::get('/home/cart/checkout', [StripeController::class, 'showForm'])->name('checkout');
-Route::post('/home/cart/checkout', [StripeController::class, 'payment'])->name('payment');
+Route::get('/home/cart/payment/{order}', [StripeController::class, 'showForm'])->name('showPayment');
+Route::post('/home/cart/payment/{order}', [StripeController::class, 'payment'])->name('payment');
 
 Route::get('/home/showDetails/{product}', [ProductController::class, 'showDetails'])->name('showDetails');
 Route::get('/home/search', [ProductController::class, 'searchBar'])->name('searchBar');

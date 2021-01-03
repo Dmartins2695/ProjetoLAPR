@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
@@ -42,7 +43,22 @@ class CartController extends Controller
     }
 
     public function checkout(){
-
+        $cart=$this->getCart();
+        $order=Order::create();
+        foreach ($cart as $productCart){
+           if($productCart->stock-$productCart->qty>=0){
+               $productDb=Product::find($productCart->id);
+               $productDb->stock-=$productCart->qty;
+               $productDb->save();
+               $order->addProduct($productDb);
+           }else{
+               return back()->with('messageDanger','We dont have stock: '.$productCart->qty.' of: '.$productCart->name);
+           }
+        }
+        if(isset($order)){
+            $order->save();
+        }
+        return redirect()->route('showPayment',$order);
     }
 
     public function getCart(){

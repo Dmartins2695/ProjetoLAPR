@@ -17,7 +17,7 @@
         </div>
         <div class="row justify-content-center" style="margin-top:20px">
             <div class="col-md-5 col-md-offset-4">
-                <form action="{{route('payment')}}" method="post" id="payment-form">
+                <form action="{{route('payment',$order->id)}}" method="post" id="payment-form">
                     @csrf
                     <label for="email"
                            class="col-md-4 col-form-label text-md-right">{{ __('Enter your E-mail') }}</label>

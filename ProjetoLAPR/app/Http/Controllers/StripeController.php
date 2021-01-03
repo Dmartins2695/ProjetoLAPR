@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\PaymentReceipt;
+use App\Models\Order;
 use App\Models\Payment;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -14,12 +15,12 @@ use Stripe;
 
 class StripeController extends Controller
 {
-    public function showForm()
+    public function showForm(Order $order)
     {
-        return view('cart.payment', ['total' => Cart::subtotal()]);
+        return view('cart.payment', ['total' => Cart::subtotal(),'order' => $order]);
     }
 
-    public function payment(Request $request)
+    public function payment(Request $request,Order $order)
     {
         $request->validate([
             'email' => 'required|email',
@@ -47,10 +48,16 @@ class StripeController extends Controller
             'currency' => 'eur',
             "source" => $request->stripeToken,
             'description' => 'Allegro payment',
+            'metadata' =>[
+                'order_id'=> $order->id,
+                ]
         ]);
         $payment->status=true;
         $payment->token=$charge['id'];
         $payment->save();
+        $order->payment_id=$payment->id;
+        $order->status=true;
+        $order->save();
         Mail::to($payment->email)->send(new PaymentReceipt($payment));
         return  redirect()->route('home')->with('message', 'Code of purchase sent to email given!');
     }
