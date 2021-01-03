@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    
+    @include('includes._settingMenu')
 
 @endsection
 

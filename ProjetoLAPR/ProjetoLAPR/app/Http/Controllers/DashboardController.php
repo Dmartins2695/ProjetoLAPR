@@ -72,4 +72,9 @@ class DashboardController extends Controller
         $products=Product::paginate(15);
         return view('dashboard.tables', ['products' => $products, 'tableName' => $tableName]);
     }
+
+    public function showOrders(){
+        $tableName = 'orders';
+        
+    }
 }

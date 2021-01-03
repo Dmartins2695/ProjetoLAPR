@@ -47,6 +47,7 @@ Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
     Route::get('/dashboard/tables/subs', [DashboardController::class, 'showSubs']);
     Route::get('/dashboard/tables/users', [DashboardController::class, 'showUsers']);
     Route::get('/dashboard/tables/products', [DashboardController::class, 'showProducts']);
+    Route::get('/dashboard/tables/orders', [DashboardController::class, 'showOrders'])->name('ordersTable');
 
     Route::get('/dashboard/tables/users/show/{user}', [UsersController::class, 'show']);
     Route::get('/dashboard/tables/users/edit/{user}', [UsersController::class, 'edit']);
