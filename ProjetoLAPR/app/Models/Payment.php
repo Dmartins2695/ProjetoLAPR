@@ -19,6 +19,6 @@ class Payment extends Model
     ];
 
     public function payment(){
-        return $this->belongsTo(Order::class);
+        return $this->hasOne(Order::class);
     }
 }

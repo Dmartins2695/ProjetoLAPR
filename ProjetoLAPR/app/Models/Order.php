@@ -9,6 +9,10 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'status'
+    ];
+
     public function products()
     {
         return $this->belongsToMany(Product::class)->withTimestamps();

@@ -44,4 +44,21 @@
             </div>
         </div>
     </div>
+{{--    <div class="container mb-2">
+        @foreach($products as $product)
+            <img src="{{asset($product->image)}}" alt="{{$product->name}}">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-sm-2 text-start border-bottom">
+                    {{$product->id}}
+                </div>
+                <div class="col-sm-2 text-start border-bottom">
+                    {{$product->name}}
+                </div>
+                <div class="col-sm-2 text-start border-bottom">
+                    {{$product->price}}
+                </div>
+            </div>
+        @endforeach
+    </div>--}}
+
 </div>
