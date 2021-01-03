@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -33,6 +34,8 @@ Route::get('/home/search', [ProductController::class, 'searchBar'])->name('searc
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home/{tag}', [ProductController::class, 'productFilter'])->name('productFilter');
+
+Route::get('/settings', [SettingsController::class, 'show'])->name('settings');
 
 Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
 
