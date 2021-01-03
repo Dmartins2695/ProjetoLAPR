@@ -40,7 +40,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home/{tag}', [ProductController::class, 'productFilter'])->name('productFilter');
 
-Route::get('/settings', [SettingsController::class, 'show'])->name('settings');
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('/info/settings', [SettingsController::class, 'show'])->name('settings');
+    Route::get('/loyalty', [SettingsController::class, 'show'])->name('loyalty');
+    Route::get('/info/editUserInfo', [SettingsController::class, 'edit'])->name('editUserInfo');
+    Route::post('/info/store/{user}', [SettingsController::class, 'store'])->name('infoStore');
+});
 
 Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
 

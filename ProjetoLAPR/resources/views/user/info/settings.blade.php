@@ -5,12 +5,8 @@
 @endsection
 
 @section('content')
-    @include('includes._settingMenu')
+    @include('includes._settingMenu')  
+    @include('user.info.userInfo')
 
 @endsection
 
-
-
-@section('footer')
-    @include('includes._footer')
-@endsection
