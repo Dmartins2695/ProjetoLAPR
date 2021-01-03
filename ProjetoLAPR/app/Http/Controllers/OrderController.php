@@ -18,7 +18,7 @@ class OrderController extends Controller
         return view('dashboard.orders.showOrder',['order'=>$order]);
     }
     public function edit(Order $order){
-        return view('dashboard.orders.showOrder',['order'=>$order]);
+        return view('dashboard.orders.editOrder',['order'=>$order]);
     }
     public function update(Request $request,Order $order){
 
