@@ -45,13 +45,13 @@
                             </tr>
                         @endforeach
                     @else
-                            <h5 class="text-danger">No products in your Cart! Please add Products to the Cart!<h5>
+                            <h1 class="text-danger">No products in your Cart! Please add Products to the Cart!<h1>
                     @endif
                     </tbody>
                     <tr class="align-middle text-center">
                         <td colspan="3">&nbsp;</td>
                         <td>Total Price: </td>
-                        <td>{{Gloudemans\Shoppingcart\Facades\Cart::total()}}</td>
+                        <td>{{Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</td>
                     </tr>
                 </table>
                 <div class="row justify-content-end align-items-center">
@@ -65,6 +65,3 @@
     </main>
 @endsection
 
-@section('footer')
-    @include('includes._footer')
-@endsection

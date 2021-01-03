@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -26,6 +27,9 @@ Route::get('/home/showCart', [CartController::class, 'show'])->name('showCart');
 Route::get('/home/cart/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::get('/home/deleteItem/{rowId}', [CartController::class, 'delete'])->name('deleteItem');
 Route::get('/home/updateItem/{rowId}', [CartController::class, 'update'])->name('updateItem');
+
+Route::get('/home/cart/checkout', [StripeController::class, 'showForm'])->name('checkout');
+Route::post('/home/cart/checkout', [StripeController::class, 'payment'])->name('payment');
 
 Route::get('/home/showDetails/{product}', [ProductController::class, 'showDetails'])->name('showDetails');
 Route::get('/home/search', [ProductController::class, 'searchBar'])->name('searchBar');

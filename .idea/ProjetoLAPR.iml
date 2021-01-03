@@ -39,6 +39,7 @@
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/hamcrest/hamcrest-php" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/hardevine/shoppingcart" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/justinrainbow/json-schema" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/laravel/cashier" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/laravel/sail" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/laravel/tinker" />
@@ -47,6 +48,7 @@
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/league/flysystem" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/league/mime-type-detection" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/mockery/mockery" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/moneyphp/money" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/nesbot/carbon" />
@@ -98,6 +100,7 @@
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/sebastian/version" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/seld/jsonlint" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/seld/phar-utils" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/stripe/stripe-php" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/css-selector" />
@@ -110,10 +113,12 @@
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/http-client-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/http-foundation" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/intl" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/mime" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/polyfill-ctype" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/polyfill-iconv" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/polyfill-intl-icu" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/polyfill-intl-idn" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/polyfill-intl-normalizer" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetoLAPR/vendor/symfony/polyfill-mbstring" />
