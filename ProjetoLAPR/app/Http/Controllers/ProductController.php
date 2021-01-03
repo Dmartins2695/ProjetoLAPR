@@ -119,8 +119,9 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
+        $name=ucfirst($product->name);
         $product->delete();
-        return back()->with('messageDanger', ucfirst($product->name) . ": Deleted from database!");
+        return back()->with('messageDanger', ucfirst($name) . ": Deleted from database!");
     }
 
     public function productsPdf()

@@ -58,6 +58,7 @@ class StripeController extends Controller
         $order->payment_id=$payment->id;
         $order->status=true;
         $order->save();
+        Cart::destroy();
         Mail::to($payment->email)->send(new PaymentReceipt($payment));
         return  redirect()->route('home')->with('message', 'Code of purchase sent to email given!');
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\TagsController;
@@ -47,7 +48,12 @@ Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
     Route::get('/dashboard/tables/subs', [DashboardController::class, 'showSubs']);
     Route::get('/dashboard/tables/users', [DashboardController::class, 'showUsers']);
     Route::get('/dashboard/tables/products', [DashboardController::class, 'showProducts']);
-    Route::get('/dashboard/tables/orders', [DashboardController::class, 'showOrders'])->name('ordersTable');
+    Route::get('/dashboard/tables/orders', [OrderController::class, 'showOrders'])->name('ordersTable');
+
+    Route::get('/dashboard/tables/orders/show/{order}', [OrderController::class, 'show'])->name('showOrderDetails');
+    Route::get('/dashboard/tables/orders/edit/{order}', [OrderController::class, 'edit'])->name('editOrder');
+    Route::post('/dashboard/tables/orders/update/{order}', [OrderController::class, 'update'])->name('updateOrder');
+    Route::post('/dashboard/tables/orders/delete/{order}', [OrderController::class, 'delete'])->name('deleteOrder');
 
     Route::get('/dashboard/tables/users/show/{user}', [UsersController::class, 'show']);
     Route::get('/dashboard/tables/users/edit/{user}', [UsersController::class, 'edit']);
