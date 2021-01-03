@@ -67,7 +67,7 @@
 
                     <div class="mb-3">
                         <input id="zip" type="text" class="form-control @error('zip') is-invalid @enderror"
-                               name="zip" value="{{old('zip')}}" placeholder="1234-123" autocomplete="zip">
+                               name="zip" value="{{old('zip')}}" placeholder="1234123" maxlength="7" autocomplete="zip">
 
                         @error('zip')
                         <span class="invalid-feedback" role="alert">

@@ -13,8 +13,8 @@ class Payment extends Model
         'email',
         'adress',
         'zip',
-        'payer_email',
+        'name',
         'amount',
-        'payment_status'
+        'status'
     ];
 }

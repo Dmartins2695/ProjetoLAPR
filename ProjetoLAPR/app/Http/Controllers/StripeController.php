@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PaymentReceipt;
 use App\Models\Payment;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Stripe\Exception\ApiErrorException;
 use Stripe\PaymentIntent;
 use Stripe;
@@ -49,7 +51,8 @@ class StripeController extends Controller
         $payment->status=true;
         $payment->token=$charge['id'];
         $payment->save();
-        return back()->with('message','payment done');
+        Mail::to($payment->email)->send(new PaymentReceipt($payment));
+        return  redirect()->route('home')->with('message', 'Code of purchase sent to email given!');
     }
 }
 
