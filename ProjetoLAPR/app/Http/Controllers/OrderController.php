@@ -15,7 +15,7 @@ class OrderController extends Controller
     }
 
     public function show(Order $order){
-        $products=$order->products();
+        $products=$order->products;
         return view('dashboard.orders.showOrder',['order'=>$order,'products'=>$products]);
     }
     public function edit(Order $order){
