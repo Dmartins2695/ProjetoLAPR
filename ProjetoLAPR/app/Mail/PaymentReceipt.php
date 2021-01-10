@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\Order;
+use App\Models\Payment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -17,7 +19,7 @@ class PaymentReceipt extends Mailable
      *
      * @return void
      */
-    public function __construct($payment,$order)
+    public function __construct(Payment $payment ,Order $order)
     {
         $this->payment=$payment;
         $this->order=$order;

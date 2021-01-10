@@ -8,7 +8,7 @@
 # {{'receipt of purchase in Allegro store.'}}
 
 We apreciate for purchase.<br>
-If something is wrong with the package this is the code to confirm the payment: <bold>{{$email->token}}</bold>,<br>
+If something is wrong with the package this is the code to confirm the payment: <bold>{{$payment->token}}</bold>,<br>
 And this is the Identifier of your Order: {{$order->id}}.<br>
 This code will be asked get the details of the purchase.<br>
 

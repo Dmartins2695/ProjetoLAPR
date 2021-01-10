@@ -24,7 +24,7 @@ class StripeController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'name' => 'required|alpha',
+            'name' => 'required|string',
             'adress' => 'required|string',
             'zip' => 'required|digits:7|alpha_dash',
         ]);
@@ -52,15 +52,17 @@ class StripeController extends Controller
                 'order_id'=> $order->id,
                 ]
         ]);
-        dd($charge);
-        $payment->status=true;
-        $payment->token=$charge['id'];
-        $payment->save();
-        $order->payment_id=$payment->id;
-        $order->status=true;
-        $order->save();
-        Cart::destroy();
-        Mail::to($payment->email)->send(new PaymentReceipt($payment));
-        return  redirect()->route('home')->with('message', 'Code of purchase sent to email given!');
+        if($charge['paid']){
+            $payment->status=true;
+            $payment->token=$charge['id'];
+            $payment->save();
+            $order->payment_id=$payment->id;
+            $order->status=true;
+            $order->save();
+            Cart::destroy();
+            Mail::to($payment->email)->send(new PaymentReceipt($payment,$order),);
+            return  redirect()->route('home')->with('message', 'Code of purchase sent to email given!');
+        }
+        return  redirect()->back()->with('messageDanger', 'Operation not sucessfully finished! Please Try again');
     }
 }

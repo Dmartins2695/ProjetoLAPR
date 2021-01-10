@@ -44,22 +44,25 @@ class CartController extends Controller
 
     public function checkout(){
         $cart=$this->getCart();
-        $order=Order::create();
-        foreach ($cart as $productCart){
-           if($productCart->stock-$productCart->qty>=0){
-               $productDb=Product::find($productCart->id);
-               $productDb->stock-=$productCart->qty;
-               $productDb->save();
-               $order->addProduct($productDb);
-               $productDb->addOrder($order);
-           }else{
-               return back()->with('messageDanger','We dont have stock: '.$productCart->qty.' of: '.$productCart->name);
-           }
+        if (isset($cart)){
+            $order=Order::create();
+            foreach ($cart as $productCart){
+                if($productCart->stock-$productCart->qty>=0){
+                    $productDb=Product::find($productCart->id);
+                    $productDb->stock-=$productCart->qty;
+                    $productDb->save();
+                    $order->addProduct($productDb);
+                    $productDb->addOrder($order);
+                }else{
+                    return back()->with('messageDanger','We dont have stock: '.$productCart->qty.' of: '.$productCart->name);
+                }
+            }
+            if(isset($order)){
+                $order->save();
+            }
+            return redirect()->route('showPayment',$order);
         }
-        if(isset($order)){
-            $order->save();
-        }
-        return redirect()->route('showPayment',$order);
+        return back()->with('messageDanger','No products to checkout!!');
     }
 
     public function getCart(){

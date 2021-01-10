@@ -14,9 +14,10 @@
                         <tr class="align-middle text-center">
                             <th>Product Image</th>
                             <th>Product Name</th>
-                            <th>Product Price</th>
+                            <th>Stock Available</th>
                             <th>Product Quantity</th>
                             <th>Delete</th>
+                            <th>Product Price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,10 +26,11 @@
                             <tr class="align-middle text-center">
                                 <td><img src="{{asset($product->image)}}" alt="{{$product->name}}" style="width: 50px;height: 70px;"></td>
                                 <td>{{ucfirst($product->name)}}</td>
-                                <td>
+                                <td>{{$product->stock}}</td>
+                                <td style="width: 18%;">
                                     <form action="{{route('updateItem',$product->rowId)}}">
                                         <div class="row justify-content-center align-items-center" >
-                                            <div class="col col-sm-2 ">
+                                            <div class="col col-sm-2 " style="width: 38%;">
                                                 <input class="form-control auto" name='qty' type="number" value="{{$product->qty}}">
                                             </div>
                                             <div class="col col-sm-1 ">
@@ -49,7 +51,7 @@
                     @endif
                     </tbody>
                     <tr class="align-middle text-center">
-                        <td colspan="3">&nbsp;</td>
+                        <td colspan="4">&nbsp;</td>
                         <td>Total Price: </td>
                         <td>{{Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</td>
                     </tr>
