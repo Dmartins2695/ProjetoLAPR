@@ -43,7 +43,7 @@
                 @else
                     <li class="nav-item">
                         <a class="nav-link" aria-haspopup="true" aria-expanded="false"
-                           href="{{--SETTINGS--}}">
+                           href="{{route('settings')}}">
                             {{ ucfirst(Auth::user()->name) }}
                         </a>
                     </li>

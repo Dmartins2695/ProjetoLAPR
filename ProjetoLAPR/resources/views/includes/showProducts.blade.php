@@ -27,6 +27,7 @@
                                             </button>
                                         </a>
                                     </div>
+                                    <small class="text-muted">Stock: {{$product->stock}}</small>
                                     <small class="text-muted">{{$product->price}}</small>
                                 </div>
                             </div>

@@ -26,6 +26,11 @@ class Product extends Model
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
+    public function order()
+    {
+        return $this->hasOne(Order::class);
+    }
+
     public function assignTag($tag){
         if(is_string($tag)){
             $tag = Tag::whereName($tag)->firstOrFail();
