@@ -9,13 +9,10 @@ class Order extends Model
 {
     use HasFactory;
 
+//Products
     public function products()
     {
         return $this->belongsToMany(Product::class)->withTimestamps();
-    }
-
-    public function payment(){
-        return $this->hasOne(Payment::class);
     }
 
     public function addProduct($product){
@@ -30,6 +27,11 @@ class Order extends Model
             $product = Role::whereName($product)->firstOrFail();
         }
         $this->products()->detach($product);
+    }
+
+// Payment
+    public function payment(){
+        return $this->hasOne(Payment::class);
     }
 
     public function addPayment($payment){

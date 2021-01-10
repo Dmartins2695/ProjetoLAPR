@@ -52,13 +52,14 @@ class StripeController extends Controller
                 'order_id'=> $order->id,
                 ]
         ]);
+        dd($charge);
         $payment->status=true;
         $payment->token=$charge['id'];
         $payment->save();
         $order->payment_id=$payment->id;
         $order->status=true;
         $order->save();
-        Mail::to($payment->email)->send(new PaymentReceipt($payment));
+        Mail::to($payment->email)->send(new PaymentReceipt($payment),new Order($order));
         return  redirect()->route('home')->with('message', 'Code of purchase sent to email given!');
     }
 }

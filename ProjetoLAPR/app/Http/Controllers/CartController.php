@@ -51,6 +51,7 @@ class CartController extends Controller
                $productDb->stock-=$productCart->qty;
                $productDb->save();
                $order->addProduct($productDb);
+               $productDb->addOrder($order);
            }else{
                return back()->with('messageDanger','We dont have stock: '.$productCart->qty.' of: '.$productCart->name);
            }

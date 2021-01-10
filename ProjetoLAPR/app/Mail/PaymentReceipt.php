@@ -10,15 +10,17 @@ use Illuminate\Queue\SerializesModels;
 class PaymentReceipt extends Mailable
 {
     use Queueable, SerializesModels;
-    public $email;
+    public $payment;
+    public $order;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email)
+    public function __construct($payment,$order)
     {
-        $this->email=$email;
+        $this->payment=$payment;
+        $this->order=$order;
     }
 
     /**

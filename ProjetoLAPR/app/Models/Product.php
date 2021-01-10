@@ -20,6 +20,7 @@ class Product extends Model
         return asset('storage/'.$value);
     }
 
+//Tags
     public function tags()
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
@@ -47,5 +48,25 @@ class Product extends Model
             }
         }
         return false;
+    }
+
+// Orders
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class)->withTimestamps();
+    }
+
+    public function addOrder($order){
+        if(is_int($order)){
+            $order = Order::whereId($order)->firstOrFail();
+        }
+        $this->orders()->syncWithoutDetaching($order);
+    }
+
+    public function deleteOrder($order){
+        if(is_int($order)){
+            $order = Order::whereId($order)->firstOrFail();
+        }
+        $this->orders()->detach($order);
     }
 }
