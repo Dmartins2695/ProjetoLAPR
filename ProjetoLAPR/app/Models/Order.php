@@ -12,7 +12,7 @@ class Order extends Model
     protected $fillable = [
         'status'
     ];
-    
+
     public function products()
     {
         return $this->belongsToMany(Product::class)->withTimestamps();
@@ -22,7 +22,7 @@ class Order extends Model
         if(is_string($product)){
             $product = Role::whereName($product)->firstOrFail();
         }
-        $this->products()->syncWithoutDetaching($product);
+        $this->products()->attach($product);
     }
 
     public function deleteProduct($product){

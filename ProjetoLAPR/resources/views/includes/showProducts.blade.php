@@ -3,7 +3,6 @@
             @foreach($products->chunk(3) as $chunk)
             <div class="row">
                 @foreach($chunk as $product)
-{{--                    {{dd($product)}}--}}
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top"

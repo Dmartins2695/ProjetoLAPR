@@ -44,21 +44,29 @@
             </div>
         </div>
     </div>
-    <div class="container mb-2">
-        @foreach($products as $product)
-            <img src="{{asset($product->image)}}" alt="{{$product->name}}">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-sm-2 text-start border-bottom">
-                    {{$product->id}}
-                </div>
-                <div class="col-sm-2 text-start border-bottom">
-                    {{$product->name}}
-                </div>
-                <div class="col-sm-2 text-start border-bottom">
-                    {{$product->price}}
-                </div>
-            </div>
-        @endforeach
+    <div class="container">
+        <h3>Order itens:</h3>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr class="align-middle text-center">
+                <th>Product Image</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Stock Available</th>
+                <th>Product Price</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach($products as $product)
+                    <tr class="align-middle text-center">
+                        <td><img src="{{asset($product->image)}}" alt="{{$product->name}}" style="width: 50px;height: 70px;"></td>
+                        <td>{{$product->id}}</td>
+                        <td>{{ucfirst($product->name)}}</td>
+                        <td>{{$product->stock}}</td>
+                        <td>{{$product->price}}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-
 </div>

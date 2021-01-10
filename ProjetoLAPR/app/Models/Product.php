@@ -65,7 +65,7 @@ class Product extends Model
         if(is_int($order)){
             $order = Order::whereId($order)->firstOrFail();
         }
-        $this->orders()->syncWithoutDetaching($order);
+        $this->orders()->attach($order);
     }
 
     public function deleteOrder($order){
