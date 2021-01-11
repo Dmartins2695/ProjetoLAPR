@@ -6,29 +6,103 @@
 
 @section('content')
     @include('includes._settingMenu')
-{{--    @include('user.info.userInfo')--}}
+    {{--    @include('user.info.userInfo')--}}
     <div class="wrapper bg-white mt-sm-5">
         <h4 class="pb-4 border-bottom">Account settings</h4>
-        <div class="d-flex align-items-start py-3 border-bottom"> <img src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="img" alt="">
-            <div class="px-sm-4 px-2" id="img-section"> <b>Profile Photo</b>
-                <p>Accepted file type .png. Less than 1MB</p> <button class="btn button border"><b>Upload</b></button>
-            </div>
-        </div>
+
         <div class="py-2">
-            <div class="row py-2">
-                <div class="col-md-6"> <label for="firstname">First Name</label> <input type="text" class="bg-light form-control" placeholder="Steve"> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Last Name</label> <input type="text" class="bg-light form-control" placeholder="Smith"> </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-md-6"> <label for="email">Email Address</label> <input type="text" class="bg-light form-control" placeholder="steve_@email.com"> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Phone Number</label> <input type="tel" class="bg-light form-control" placeholder="+1 213-548-6015"> </div>
-            </div>
-            <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3">Save Changes</button> <button class="btn border button">Cancel</button> </div>
-            <div class="d-sm-flex align-items-center pt-3" id="deactivate">
-                <div> <b>Deactivate your account</b>
-                    <p>Details about your company account and password</p>
+            <form method="POST" action="{{ route('infoStore', $user->id) }}">
+                @csrf
+                <div class="row py-2">
+                    <div class="col-md-6">
+                        <label for="name">First Name</label>
+                        <div class="mb">
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                                   name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
+
+                            @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6 pt-md-0 pt-3">
+                        <label for="email">Email Address</label>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                               name="email" value="{{ $user->email }}" required autocomplete="email">
+
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                    </div>
                 </div>
-                <div class="mx-auto"> <button class="btn danger">Deactivate</button> </div>
+                <div class="py-3 pb-4 border-bottom">
+                    <button class="btn btn-primary mr-3">Save Changes</button>
+                </div>
+            </form>
+
+            <h6 class="py-4 border-bottom">Change Password</h6>
+            <div>
+                <form method="POST" action="{{ route('infoResetPassword', $user->id) }}">
+                    @csrf
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <label for="passCur">Current Password</label>
+                            <input id="passCur" type="password" placeholder="Current Password"
+                                   class="form-control @error('passCur') is-invalid @enderror" name="passCur" required
+                                   autocomplete="new-password">
+
+                            @error('passCur')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <label for="password">New Password</label>
+                            <input id="password" type="password" placeholder="New Password"
+                                   class="form-control @error('password') is-invalid @enderror" name="password" required
+                                   autocomplete="new-password">
+
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-6 pt-md-0 pt-3">
+                            <label for="passNew2">Confirm New Password</label>
+                            <input id="password-confirm" type="password" class="form-control"
+                                   placeholder="Confirm New Password"
+                                   name="password_confirmation"
+                                   required autocomplete="new-password">
+                        </div>
+                    </div>
+                    <div class="py-3 pb-4 border-bottom">
+                        <button class="btn btn-primary mr-3">Change Password</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="d-sm-flex align-items-center pt-3" id="deactivate">
+                <div>
+                    <b>Deactivate your account</b>
+                    <p>Pressing this button will delete your account forever,<br>
+                        It will be impossible to recover your account,<br>
+                        This action will not be blamed on the site,<br>
+                        So please make sure that's really the action you want to do.<br>
+                    </p>
+                </div>
+                <div class="mx-auto">
+                    <a href="{{route('accountDelete',$user->id)}}">
+                        <button class="btn danger">Deactivate</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -132,7 +206,7 @@
             color: #fff
         }
 
-        @media(max-width:576px) {
+        @media (max-width: 576px) {
             .wrapper {
                 padding: 25px 20px
             }

@@ -46,6 +46,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/loyalty', [SettingsController::class, 'show'])->name('loyalty');
     Route::get('/info/editUserInfo', [SettingsController::class, 'edit'])->name('editUserInfo');
     Route::post('/info/store/{user}', [SettingsController::class, 'store'])->name('infoStore');
+    Route::post('/info/resetPassword/{user}', [SettingsController::class, 'resetPassword'])->name('infoResetPassword');
+    Route::get('/info/delete/{user}', [SettingsController::class, 'delete'])->name('accountDelete');
 });
 
 Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
