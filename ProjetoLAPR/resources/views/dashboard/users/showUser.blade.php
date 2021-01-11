@@ -50,7 +50,7 @@
             </div>
 
 
-            <div class="row py-2 pb-4 border-bottom">
+            <div class="row py-2 ">
                 <div class="col-md-6"><label for="email">Account Created</label>
                     <input type="text"
                            class="bg-light form-control"
@@ -62,6 +62,17 @@
                            class="bg-light form-control"
                            disabled
                            placeholder="{{$user->updated_at}}">
+                </div>
+            </div>
+
+            <div class="row py-2 pb-4 border-bottom">
+                <div class="col-md-12">
+                    <label for="userRoles">User Roles</label>
+                    <div class="col-sm-6 form-control border" style="background-color: #f8f9fa; font-weight: 500; color:#6c757d;">
+                        @foreach($roles as $role)
+                            {{$role->name.", "}}
+                        @endforeach
+                    </div>
                 </div>
             </div>
 

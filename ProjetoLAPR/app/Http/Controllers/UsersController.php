@@ -13,7 +13,8 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        return view('dashboard.users.showUser',['user'=>$user]);
+        $roles=$user->roles;
+        return view('dashboard.users.showUser',['user'=>$user,'roles'=>$roles]);
     }
 
 
