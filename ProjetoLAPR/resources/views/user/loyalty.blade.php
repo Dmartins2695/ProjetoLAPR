@@ -6,3 +6,4 @@
 
 @section('content')
 @include('includes._settingsMenu')
+@endsection
