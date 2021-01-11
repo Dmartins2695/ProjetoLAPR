@@ -27,6 +27,16 @@
     <div class="container mb-2">
         <div class="row align-items-center justify-content-center">
             <div class="col-sm-2 text-start border-bottom">
+                <label for="Username">Total Price</label>
+            </div>
+            <div class="col-sm-2 text-start border-bottom">
+                {{$order->amount}}
+            </div>
+        </div>
+    </div>
+    <div class="container mb-2">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-sm-2 text-start border-bottom">
                 <label for="Username">Created at</label>
             </div>
             <div class="col-sm-2 text-start border-bottom">
@@ -34,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="container mb-2">
+    <div class="container mb-5">
         <div class="row align-items-center justify-content-center">
             <div class="col-sm-2 text-start border-bottom">
                 <label for="Username">Paid at</label>
@@ -45,7 +55,7 @@
         </div>
     </div>
     <div class="container">
-        <h3>Order itens:</h3>
+        <h3>Total Order itens: {{count($products)}}</h3>
         <table class="table table-striped table-hover">
             <thead>
             <tr class="align-middle text-center">
@@ -67,6 +77,11 @@
                     </tr>
                 @endforeach
             </tbody>
+            <tr class="align-middle text-center">
+                <td colspan="3">&nbsp;</td>
+                <td>Total Price: </td>
+                <td>{{$order->amount}}</td>
+            </tr>
         </table>
     </div>
 </div>

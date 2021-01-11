@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('payment_id')->nullable();
             $table->string('status')->default(false);
+            $table->float('amount', 8, 2)->nullable();
             $table->timestamps();
 
             $table->foreign('payment_id')
@@ -41,6 +42,9 @@ class CreateOrdersTable extends Migration
                 ->on('orders')
                 ->onDelete('cascade');
         });
+
+
+
     }
 
     /**

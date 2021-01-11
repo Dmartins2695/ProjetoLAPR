@@ -58,6 +58,7 @@ class CartController extends Controller
                 }
             }
             if(isset($order)){
+                $order->amount=Cart::subtotal();
                 $order->save();
             }
             return redirect()->route('showPayment',$order);
