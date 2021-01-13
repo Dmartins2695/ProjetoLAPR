@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoyaltyController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeController;
@@ -41,14 +42,19 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home/{tag}', [ProductController::class, 'productFilter'])->name('productFilter');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-
     Route::get('/info/settings', [SettingsController::class, 'show'])->name('settings');
-    Route::get('/loyalty', [SettingsController::class, 'show'])->name('loyalty');
     Route::get('/info/editUserInfo', [SettingsController::class, 'edit'])->name('editUserInfo');
     Route::post('/info/store/{user}', [SettingsController::class, 'store'])->name('infoStore');
     Route::post('/info/resetPassword/{user}', [SettingsController::class, 'resetPassword'])->name('infoResetPassword');
     Route::get('/info/delete/{user}', [SettingsController::class, 'delete'])->name('accountDelete');
+
 });
+
+Route::middleware(['auth', 'verified','hasRole:sub'])->group(function () {
+    Route::get('/loyalty', [LoyaltyController::class, 'show'])->name('showLoyal');
+    Route::get('/home/cart/payment/{user}/{order}', [CartController::class, 'pointForm'])->name('pointForm');
+});
+
 
 Route::middleware(['auth', 'verified','hasRole:admin'])->group(function () {
 

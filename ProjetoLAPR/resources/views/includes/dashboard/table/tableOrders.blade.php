@@ -1,5 +1,6 @@
 <th>Order ID</th>
 <th>Payment ID</th>
+<th>User ID</th>
 <th>Order Status</th>
 <th>Created</th>
 <th>Updated</th>
@@ -11,6 +12,7 @@
     <tr class="align-middle">
         <td>{{$order['id']}}</td>
         <td>{{$order['payment_id']}}</td>
+        <td>{{$order['user_id']}}</td>
         <td>{{$order['status']==true ? 'Paid' : 'Not Paid'}}</td>
         <td>{{$order['created_at']}}</td>
         <td>{{$order['updated_at']}}</td>

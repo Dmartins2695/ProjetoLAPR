@@ -43,4 +43,9 @@ class Order extends Model
         }
         $this->payment()->syncWithoutDetaching($payment);
     }
+
+// User
+    public function user(){
+        return$this->belongsTo(User::class);
+    }
 }

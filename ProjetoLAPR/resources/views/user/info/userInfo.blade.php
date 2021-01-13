@@ -1,72 +1,209 @@
-<div class="row align-items-center justify-content-center mb-3" style="margin-top:45px">
-    <div class="col-sm-4 text-start border-bottom">
-        <h2 class="mx-auto">Information {{ucfirst($user->name)}}</h2>
+<div class="wrapper bg-white mt-sm-5">
+    <h4 class="pb-4 border-bottom">Account settings</h4>
+
+    <div class="py-2">
+        <form method="POST" action="{{ route('infoStore', $user->id) }}">
+            @csrf
+            <div class="row py-2">
+                <div class="col-md-6">
+                    <label for="name">First Name</label>
+                    <div class="mb">
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                               name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
+
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6 pt-md-0 pt-3">
+                    <label for="email">Email Address</label>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                           name="email" value="{{ $user->email }}" required autocomplete="email">
+
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="py-3 pb-4 border-bottom">
+                <button class="btn btn-primary mr-3">Save Changes</button>
+            </div>
+        </form>
+
+        <h6 class="py-4 border-bottom">Change Password</h6>
+        <div>
+            <form method="POST" action="{{ route('infoResetPassword', $user->id) }}">
+                @csrf
+                <div class="row py-2">
+                    <div class="col-md-6">
+                        <label for="passCur">Current Password</label>
+                        <input id="passCur" type="password" placeholder="Current Password"
+                               class="form-control @error('passCur') is-invalid @enderror" name="passCur" required
+                               autocomplete="new-password">
+
+                        @error('passCur')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-6">
+                        <label for="password">New Password</label>
+                        <input id="password" type="password" placeholder="New Password"
+                               class="form-control @error('password') is-invalid @enderror" name="password" required
+                               autocomplete="new-password">
+
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-6 pt-md-0 pt-3">
+                        <label for="passNew2">Confirm New Password</label>
+                        <input id="password-confirm" type="password" class="form-control"
+                               placeholder="Confirm New Password"
+                               name="password_confirmation"
+                               required autocomplete="new-password">
+                    </div>
+                </div>
+                <div class="py-3 pb-4 border-bottom">
+                    <button class="btn btn-primary mr-3">Change Password</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="d-sm-flex align-items-center pt-3" id="deactivate">
+            <div>
+                <b>Deactivate your account</b>
+                <p>Pressing this button will delete your account forever,<br>
+                    It will be impossible to recover your account,<br>
+                    This action will not be blamed on the site,<br>
+                    So please make sure that's really the action you want to do.<br>
+                </p>
+            </div>
+            <div class="mx-auto">
+                <a href="{{route('accountDelete',$user->id)}}">
+                    <button class="btn danger">Deactivate</button>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
-<div class="container " style="margin-top: 5rem;">
-    <div class="container mb-2">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-sm-2 text-start border-bottom">
-                <label for="Username">Username:</label>
-            </div>
-            <div class="col-sm-2 text-start border-bottom">
-                {{$user->name}}
-            </div>
-        </div>
-    </div>
-    <div class="container mb-2">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-sm-2 text-start border-bottom">
-                <label for="Username">Email: </label>
-            </div>
-            <div class="col-sm-2 text-start border-bottom">
-                {{$user->email}}
-            </div>
-        </div>
-    </div>
-    <div class="container mb-2">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-sm-2 text-start border-bottom">
-                <label for="Username">Account created: </label>
-            </div>
-            <div class="col-sm-2 text-start border-bottom">
-                {{$user->created_at}}
-            </div>
-        </div>
-    </div>
-    <div class="container mb-2">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-sm-2 text-start border-bottom">
-                <label for="Username">Role:</label>
-            </div>
-            <div class="col-sm-2 text-start border-bottom">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-                @foreach(($user->roles) as $role)
-                {{$role->name}},
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <div class="container mb-2">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-sm-2 text-start border-bottom">
-                <label for="Username">Loyalty status:</label>
-            </div>
-            <div class="col-sm-2 text-start border-bottom">
+    body {
+        background-color: white
+    }
 
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="container mb-2">
-        <div class="row align-items-start justify-content-center">
-            <div class="col-sm-4 text-start">
-                <form action="{{route('editUserInfo')}}" method="get">
-                    <button type="submit" class="btn btn-primary">
-                        Edit Information</button>
-                </form>
-                
-            </div>
-        </div>
-    </div>
-</div>
+    .wrapper {
+        padding: 30px 50px;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        margin: 10px auto;
+        max-width: 600px
+    }
+
+    h4 {
+        letter-spacing: -1px;
+        font-weight: 400
+    }
+
+    .img {
+        width: 70px;
+        height: 70px;
+        border-radius: 6px;
+        object-fit: cover
+    }
+
+    #img-section p,
+    #deactivate p {
+        font-size: 12px;
+        color: #777;
+        margin-bottom: 10px;
+        text-align: justify
+    }
+
+    #img-section b,
+    #img-section button,
+    #deactivate b {
+        font-size: 14px
+    }
+
+    label {
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 500;
+        color: #777;
+        padding-left: 3px
+    }
+
+    .form-control {
+        border-radius: 10px
+    }
+
+    input[placeholder] {
+        font-weight: 500
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border: 1.5px solid #0779e4
+    }
+
+    select {
+        display: block;
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        height: 40px;
+        padding: 5px 10px
+    }
+
+    select:focus {
+        outline: none
+    }
+
+    .button {
+        background-color: #fff;
+        color: #0779e4
+    }
+
+    .button:hover {
+        background-color: #0779e4;
+        color: #fff
+    }
+
+    .btn-primary {
+        background-color: #0779e4
+    }
+
+    .danger {
+        background-color: #fff;
+        color: #e20404;
+        border: 1px solid #ddd
+    }
+
+    .danger:hover {
+        background-color: #e20404;
+        color: #fff
+    }
+
+    @media (max-width: 576px) {
+        .wrapper {
+            padding: 25px 20px
+        }
+
+        #deactivate {
+            line-height: 18px
+        }
+    }
+</style>

@@ -65,7 +65,7 @@
                     <label for="zip"
                            class="col-md-4 col-form-label text-md-right">{{ __('Enter your zip-code') }}</label>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <input id="zip" type="text" class="form-control @error('zip') is-invalid @enderror"
                                name="zip" value="{{old('zip')}}" placeholder="1234123" maxlength="7" autocomplete="zip">
 
@@ -74,6 +74,9 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                         @enderror
+                    </div>
+                    <div class="mb-1">
+                        <h5>Total Price: {{$order->amount}}€</h5>
                     </div>
                     <div class="card">
                         <div class="form-group">

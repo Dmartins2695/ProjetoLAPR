@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Gloudemans\Shoppingcart\Contracts\Buyable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -44,6 +44,7 @@ class CartController extends Controller
 
     public function checkout(){
         $cart=$this->getCart();
+        $user=Auth::user();
         if (isset($cart)){
             $order=Order::create();
             foreach ($cart as $productCart){
@@ -57,13 +58,23 @@ class CartController extends Controller
                     return back()->with('messageDanger','We dont have stock: '.$productCart->qty.' of: '.$productCart->name);
                 }
             }
+            if (isset($user) and $user->hasRole('sub')){
+                $order->user_id=$user->id;
+            }
             if(isset($order)){
                 $order->amount=Cart::subtotal();
                 $order->save();
             }
+            if (isset($user) and $user->hasRole('sub')){
+                return redirect()->route('pointForm',[$user->id,$order]);
+            }
             return redirect()->route('showPayment',$order);
         }
         return back()->with('messageDanger','No products to checkout!!');
+    }
+
+    public function pointForm(User $user,Order $order){
+        return view('cart.pointsForm',['user'=>$user,'order'=>$order]);
     }
 
     public function getCart(){

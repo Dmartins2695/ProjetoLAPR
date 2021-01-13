@@ -34,7 +34,7 @@
                                                 <input class="form-control auto" name='qty' type="number" value="{{$product->qty}}">
                                             </div>
                                             <div class="col col-sm-1 ">
-                                                <button class="btn btn-outline-secondary btn-sm align-center" style="border: unset;" type="submit">Update</button>
+                                                <button class="btn btn-outline-secondary btn-sm align-center" type="submit">Update</button>
                                             </div>
                                         </div>
                                     </form>
