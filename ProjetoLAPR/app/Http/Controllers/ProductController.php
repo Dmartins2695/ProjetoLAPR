@@ -188,6 +188,6 @@ class ProductController extends Controller
             $products = CollectionHelper::paginate($products, 3);
             return view('home', ['products' => $products]);
         }
-
+        return redirect()->route('home')->with('messageDanger','No products available with that keyword');
     }
 }
