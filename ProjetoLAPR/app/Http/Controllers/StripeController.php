@@ -19,11 +19,11 @@ class StripeController extends Controller
     public function showForm(Request $request, Order $order)
     {
         $user=User::find($order->user_id);
-        $order->amount-=(floor($request->pointsToUse/10));
-        if($user->gainedPoints<$request->pointsToUse or $order->amount<0){
+        if($user->gainedPoints<$request->pointsToUse){
             return redirect()->route('pointForm',[$order->user_id,$order])->with('messageDanger', 'Please enter a valid amount of Points to Use!');
         }
         $order->usedPoints=$request->pointsToUse;
+        $order->amount-=($request->pointsToUse/10);
         $order->save();
         return view('cart.payment', ['total' => Cart::subtotal(),'order' => $order]);
     }

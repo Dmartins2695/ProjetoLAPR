@@ -15,7 +15,7 @@
                 <h3 class="pb-4 border-bottom text-end">{{$user->gainedPoints}} Pts</h3>
             </div>
         </div>
-        <p>(1 points equals to 0.10€)</p>
+        <p>(10 points equals to 1€)</p>
         <div class="row py-2 ">
             <form action="{{route('showPayment',[$order])}}" method="get">
                 @csrf
